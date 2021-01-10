@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{padding:0px;margin:0px;}
+::selection{background:#202020;color:#fff;}
+::-moz-selection{background:#202020;color:#fff;}
+body{font-size:14px;color:#333;text-align:center;font-family:'Microsoft Yahei','SimHei',Tahoma,Arial,STHeiti;}
+ul,ol,li{list-style-type:none;}
+img{border:none;}
+a{color:#8590a6;text-decoration:none;}
+a:hover{color:#121212;}
+.clear{clear:both;}
+.left{float:left;}
+.right{float:right;}
+.line{height:100px;}
+.line1{height:60px;}
+.line2{height:40px;}
+.red{color:red;}
+.green{color:green;}
+.blue{color:blue;}
+.orange{color:orange;}
+
+.content{width:100%;height:auto;position:relative;}
+.center{width:auto;max-width:1200px;height:auto;margin:0px auto;position:relative;}
+
+@font-face{font-family:xiaowei;src:url(../images/xiaowei.otf);}

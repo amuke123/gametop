@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{padding:0px;margin:0px;}
+::selection{background:#202020;color:#fff;}
+::-moz-selection{background:#202020;color:#fff;}
+body{font-size:14px;color:#333;font-family:'Microsoft Yahei','微软雅黑',Tahoma,'Times New Roman',Arial,Helvetica,STHeiti;}
+ul,ol{list-style-type:none;}
+img{border:none;}
+a{color:#555;text-decoration:none;}
+a:hover{color:#33CC99;}
+.clear{clear:both;}
+.left{float:left;}
+.right{float:right;}
+.line{height:20px;}
+.red{color:red;}
+.green{color:green;}
+.blue{color:blue;}
+.orange{color:orange;}
+.tangerine{color:#ff7500;}
+.noborder{border:none;}
+.pointer{cursor:pointer;}
+
+
+::-webkit-input-placeholder{/* WebKit browsers */color:#888;}
+::-moz-placeholder{/* Mozilla Firefox 19+ */color:#888;}
+:-ms-input-placeholder{/* Internet Explorer 10+ */color:#888;}
