@@ -21,6 +21,7 @@ require_once View::getView('function');
 <link href="<?php echo TEMPLATE_URL;?>style/index.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo TEMPLATE_URL;?>style/icono.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo IDEA_URL . ADMIN_TYPE;?>/view/static/style/icon.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo IDEA_URL . ADMIN_TYPE;?>/editor/themes/code/prettify.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo TEMPLATE_URL;?>js/index.js" type="text/javascript"></script>
 <script src="<?php echo TEMPLATE_URL;?>js/action.js" type="text/javascript"></script>
 <script src="<?php echo TEMPLATE_URL;?>js/ajax.js" type="text/javascript"></script>

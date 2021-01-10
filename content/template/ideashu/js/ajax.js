@@ -63,7 +63,7 @@ function callback(){
 	if(xmlHttp.readyState == 4){
 		if(xmlHttp.status == 200){//获取服务器返回的数据//获取纯文本数据
 			var result=xmlHttp.responseText;
-			//console.log(result);
+			console.log(result);
 			var json = eval("(" + result + ")");
 			switch (json.action){
 				case 'readmore':

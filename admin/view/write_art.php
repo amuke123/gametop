@@ -8,8 +8,8 @@
 				<input type="hidden" name='arttype' id='arttype' value="a" />
 				<input type="hidden" name="fb" id="fb" value="<?php echo $aid?$art['id']:'';?>" />
 				<input type="hidden" name="id" id="aid" value="<?php echo $aid?$art['id']:'';?>" />
-				<input type="hidden" name="filenum" id="filenum" value="<?php echo $aid?$art['filenum']:'';?>"/>
-				<input type="hidden" name="saynum" value="<?php echo $aid?$art['saynum']:'';?>" />
+				<input type="hidden" name="filenum" id="filenum" value="<?php echo $aid?$art['filenum']:'0';?>"/>
+				<input type="hidden" name="saynum" value="<?php echo $aid?$art['saynum']:'0';?>" />
 				<p title="标题"><input type="text" name="title" value="<?php echo $aid?$art['title']:'';?>" required class="formtitle" placeholder="请在这里输入标题" /></p>
 				<p><textarea class="formtext" name="content" id="editor"><?php echo $aid?$art['content']:'';?></textarea></p>
 				<p>
@@ -56,9 +56,9 @@
 					<span class="m_tags_style"><a href="javascript:showTags('m_data');">初始化数据+</a></span>
 					<span id="m_data">
 						<p>
-							<input type="text" name="eyes" value="<?php echo $aid?$art['eyes']:'';?>" class="formshort2" placeholder="阅读量" />
-							<input type="text" name="goodnum" value="<?php echo $aid?$art['goodnum']:'';?>" class="formshort2" placeholder="点赞数" />
-							<input type="text" name="badnum" value="<?php echo $aid?$art['badnum']:'';?>" class="formshort2" placeholder="拍砖数" />
+							<input type="text" name="eyes" value="<?php echo $aid?$art['eyes']:'0';?>" class="formshort2" placeholder="阅读量" />
+							<input type="text" name="goodnum" value="<?php echo $aid?$art['goodnum']:'0';?>" class="formshort2" placeholder="点赞数" />
+							<input type="text" name="badnum" value="<?php echo $aid?$art['badnum']:'0';?>" class="formshort2" placeholder="拍砖数" />
 						</p>
 					</span>
 				</div>

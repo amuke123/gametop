@@ -283,9 +283,9 @@ class Cache{
 		$collects = $this->readCache('collects');
 		$newArts=art_Model::getNewLog(Control::get('new_art_num'),0,'','');
 		$newArts_cache = array();
-		foreach($newArts as $val){
-			$val['sortname']=$sorts[$val['s_id']]['sortname'];
-			$val['collects']=$collects[$val['id']];
+		foreach($newArts as $key => $val){
+			$val['sortname']=$val['s_id']=='0'?'未分类':$sorts[$val['s_id']]['sortname'];
+			$val['collects']=isset($collects[$val['id']])?$collects[$val['id']]:0;
 			$val['arturl']=Url::log($val['id']);
 			$val['sorturl']=Url::sort($val['s_id']);
 			$val['authorname']=user_Model::getUserName($val['author']);
@@ -446,8 +446,8 @@ class Cache{
 		$arts2=art_Model::getNewLog($pagenum,'0',$rolestr2,$order);
         $goods_cache = array();
 		foreach($arts as $val){
-			$val['sortname']=$sorts[$val['s_id']]['sortname'];
-			$val['collects']=$collects[$val['id']];
+			$val['sortname']=$val['s_id']=='0'?'未分类':$sorts[$val['s_id']]['sortname'];
+			$val['collects']=isset($collects[$val['id']])?$collects[$val['id']]:0;
 			$val['arturl']=Url::log($val['id']);
 			$val['sorturl']=Url::sort($val['s_id']);
 			$val['authorname']=user_Model::getUserName($val['author']);
@@ -458,8 +458,8 @@ class Cache{
             $goods_cache['week'][$val['id']]=$val;
         }
 		foreach($arts2 as $val){
-			$val['sortname']=$sorts[$val['s_id']]['sortname'];
-			$val['collects']=$collects[$val['id']];
+			$val['sortname']=$val['s_id']=='0'?'未分类':$sorts[$val['s_id']]['sortname'];
+			$val['collects']=isset($collects[$val['id']])?$collects[$val['id']]:0;
 			$val['arturl']=Url::log($val['id']);
 			$val['sorturl']=Url::sort($val['s_id']);
 			$val['authorname']=user_Model::getUserName($val['author']);
@@ -484,8 +484,8 @@ class Cache{
 		$arts2=art_Model::getNewLog($pagenum,'0',$rolestr2,$order);
         $eyes_cache = array();
 		foreach($arts as $val){
-			$val['sortname']=$sorts[$val['s_id']]['sortname'];
-			$val['collects']=$collects[$val['id']];
+			$val['sortname']=$val['s_id']=='0'?'未分类':$sorts[$val['s_id']]['sortname'];
+			$val['collects']=isset($collects[$val['id']])?$collects[$val['id']]:0;
 			$val['arturl']=Url::log($val['id']);
 			$val['sorturl']=Url::sort($val['s_id']);
 			$val['authorname']=user_Model::getUserName($val['author']);
@@ -496,8 +496,8 @@ class Cache{
             $eyes_cache['week'][$val['id']]=$val;
         }
 		foreach($arts2 as $val){
-			$val['sortname']=$sorts[$val['s_id']]['sortname'];
-			$val['collects']=$collects[$val['id']];
+			$val['sortname']=$val['s_id']=='0'?'未分类':$sorts[$val['s_id']]['sortname'];
+			$val['collects']=isset($collects[$val['id']])?$collects[$val['id']]:0;
 			$val['arturl']=Url::log($val['id']);
 			$val['sorturl']=Url::sort($val['s_id']);
 			$val['authorname']=user_Model::getUserName($val['author']);
@@ -536,8 +536,8 @@ class Cache{
 		$arts2=art_Model::getNewLog($pagenum,'0',$rolestr2,'');
 		$collect_cache = array();
 		foreach($arts as $val){
-			$val['sortname']=$sorts[$val['s_id']]['sortname'];
-			$val['collects']=$collects[$val['id']];
+			$val['sortname']=$val['s_id']=='0'?'未分类':$sorts[$val['s_id']]['sortname'];
+			$val['collects']=isset($collects[$val['id']])?$collects[$val['id']]:0;
 			$val['arturl']=Url::log($val['id']);
 			$val['sorturl']=Url::sort($val['s_id']);
 			$val['authorname']=user_Model::getUserName($val['author']);
@@ -548,8 +548,8 @@ class Cache{
             $collect_cache['week'][$val['id']]=$val;
         }
 		foreach($arts2 as $val){
-			$val['sortname']=$sorts[$val['s_id']]['sortname'];
-			$val['collects']=$collects[$val['id']];
+			$val['sortname']=$val['s_id']=='0'?'未分类':$sorts[$val['s_id']]['sortname'];
+			$val['collects']=isset($collects[$val['id']])?$collects[$val['id']]:0;
 			$val['arturl']=Url::log($val['id']);
 			$val['sorturl']=Url::sort($val['s_id']);
 			$val['authorname']=user_Model::getUserName($val['author']);

@@ -16,7 +16,7 @@ if(isset($_POST['id'])){
 		$data['type'] = 'a';
 		$data['checkok'] = Control::get('art_check')=='1'?'0':'1';
 		$data['template'] = '';
-		$data['filenum'] = isset($_POST['filenum']) ? $_POST['filenum'] : '';
+		$data['filenum'] = isset($_POST['filenum']) ? $_POST['filenum'] : '0';
 	}else{
 		$arr['filenum'] = art_Model::getArtFileNum($id);
 	}
@@ -32,7 +32,7 @@ if(isset($_POST['id'])){
 	$data['copyrights']=isset($copyrights)?$copyrights:'0';
 	$data['pic'] = isset($_POST['pic']) ? htmlspecialchars($_POST['pic']) : '';
 	$data['excerpt'] = isset($_POST['excerpt']) ? htmlspecialchars($_POST['excerpt']) : '';
-	$data['saynum'] = isset($_POST['saynum']) ? $_POST['saynum'] : '';
+	$data['saynum'] = isset($_POST['saynum']) ? $_POST['saynum'] : '0';
 	
 	$data['s_id'] = isset($_POST['sort']) ? $_POST['sort'] : '-1';
 	$tagstr = isset($_POST['tags']) ? htmlspecialchars($_POST['tags']) : '';
@@ -52,7 +52,7 @@ if(isset($_POST['id'])){
 	if($marksorttop=='1'){$mark.=',ST';}
 	$mark=trim($mark,',');
 	$data['mark']=$mark;
-	
+
 	if(art_Model::addArt($data,$id,$tagstr)){
 		echo "<script>location.href='".ADMIN_URL ."article.php';</script>";
 	}else{

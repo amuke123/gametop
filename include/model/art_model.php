@@ -81,7 +81,7 @@ class art_Model{
 		$db->query($sql2);
 	}
 	
-	static function addArt($data,$id,$tagstr=''){//创建笔记/单页
+	static function addArt($data,$id='',$tagstr=''){//创建笔记/单页
 		$db=Conn::getConnect();
 		$keystr="";
 		$valuestr="";
@@ -99,6 +99,7 @@ class art_Model{
 		}else{
 			$sql="UPDATE `". DB_PRE ."article` SET ".$upstr." WHERE `id`=".$id;
 		}
+		//echo $sql;
 		if($db->query($sql)){
 			$dataid=$id==""?$db->last_insert_id():$id;
 			if($dataid!=''&&$tagstr!=''){tag_Model::getTagsId($tagstr,$dataid);}
