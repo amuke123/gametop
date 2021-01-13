@@ -108,7 +108,7 @@ class art_Model{
 			$kk=0;
 		}
 		user_Model::setLastdate(UID);
-		updateCacheAll(array('sta','newArts'));
+		updateCacheAll(array('sta','newArts','tags'));
 		return $kk;
 	}
 	
