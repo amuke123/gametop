@@ -10,6 +10,7 @@ require_once IDEA_ROOT.'/include/core/config.php';
 require_once IDEA_ROOT.'/include/core/function.main.php';
 
 spl_autoload_register("mkAutoload");
+doStripslashes();
 
 //权限
 define('ROLE_ADMIN','admin');
@@ -28,6 +29,8 @@ date_default_timezone_set(Control::get('time_zone'));
 
 define('SITE_NAME',Control::get('sitename'));//网站名称
 //echo SITE_NAME;
+
+$mkHooks=array();
 
 $siteurl=substr(Control::get('siteurl'),-1)=="/"?Control::get('siteurl'):Control::get('siteurl')."/";
 define('IDEA_URL',$siteurl);//网站URL

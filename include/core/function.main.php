@@ -12,6 +12,21 @@ function mkAutoload($cname) {//自动加载函数
     }
 }
 
+
+function doStripslashes(){//去除多余的转义字符
+    if (get_magic_quotes_gpc()) {
+        $_GET = stripslashesDeep($_GET);
+        $_POST = stripslashesDeep($_POST);
+        $_COOKIE = stripslashesDeep($_COOKIE);
+        $_REQUEST = stripslashesDeep($_REQUEST);
+    }
+}
+
+function stripslashesDeep($value){//递归去除转义字符
+    $value = is_array($value) ? array_map('stripslashesDeep', $value) : stripslashes($value);
+    return $value;
+}
+
 function emDirect($directUrl){
 	header("Location:".$directUrl);
 	exit;
@@ -200,6 +215,24 @@ function getTag($tagids=''){//获取笔记标签
 		$str.='<a target="_blank" href="'.Url::tag($val['tagurl']).'">'.$val['tagname'].'</a>';
 	}
 	return $str;
+}
+
+function addAction($hook,$actionFunc){//添加钩子
+    global $mkHooks;
+    if(!@in_array($actionFunc,$mkHooks[$hook])){
+        $mkHooks[$hook][] =$actionFunc;
+    }
+    return true;
+}
+
+function doAction($hook){//调用钩子
+    global $mkHooks;
+    $args = array_slice(func_get_args(),1);
+    if(isset($mkHooks[$hook])){
+        foreach($mkHooks[$hook] as $function){
+            $string = call_user_func_array($function, $args);
+        }
+    }
 }
 
 function getIps(){//获取用户ip地址
