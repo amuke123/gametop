@@ -10,7 +10,7 @@ require_once IDEA_ROOT.'/include/core/config.php';
 require_once IDEA_ROOT.'/include/core/function.main.php';
 
 spl_autoload_register("mkAutoload");
-doStripslashes();
+//doStripslashes();
 
 //权限
 define('ROLE_ADMIN','admin');

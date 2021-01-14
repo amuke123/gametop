@@ -88,8 +88,8 @@ class art_Model{
 		$upstr="";
 		foreach($data as $key => $value){
 			$keystr.="`".$key."`,";
-			$valuestr.="'".addslashes($value)."',";
-			$upstr.="`".$key."`='".addslashes($value)."',";
+			$valuestr.="'".$value."',";
+			$upstr.="`".$key."`='".$value."',";
 		}
 		$keystr=trim($keystr,',');
 		$valuestr=trim($valuestr,',');
