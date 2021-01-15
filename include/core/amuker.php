@@ -12,12 +12,19 @@ require_once IDEA_ROOT.'/include/core/function.main.php';
 spl_autoload_register("mkAutoload");
 //doStripslashes();
 
+$url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+baiduTj($url);
+
 //权限
 define('ROLE_ADMIN','admin');
 define('ROLE_WRITER','writer');
 define('ROLE_VISITOR','visitor');
 
 $cache = Conn::getCache();
+
+$siteurl=substr(Control::get('siteurl'),-1)=="/"?Control::get('siteurl'):Control::get('siteurl')."/";
+define('IDEA_URL',$siteurl);//网站URL
+
 //$cache -> updateCache();
 $uid = !empty(Checking::isLogin())?Checking::isLogin():0;
 define('UID',$uid);
@@ -31,9 +38,8 @@ define('SITE_NAME',Control::get('sitename'));//网站名称
 //echo SITE_NAME;
 
 $mkHooks=array();
+Sitemap::setXml();
 
-$siteurl=substr(Control::get('siteurl'),-1)=="/"?Control::get('siteurl'):Control::get('siteurl')."/";
-define('IDEA_URL',$siteurl);//网站URL
 define('ADMIN_TYPE','admin');//后台路径
 define('TPLS_PATH',IDEA_URL .'content/template/');//模板库目录
 define('TEMPLATE_URL',TPLS_PATH .Control::get('template').'/');//模版地址

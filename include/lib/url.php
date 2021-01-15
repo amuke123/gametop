@@ -105,14 +105,17 @@ class Url{
 	}
 	
 	static function author($authorId,$page=null){//获取作者链接
+		$cache = Conn::getCache();
+		$userdiy=$cache->readCache('userdiy');
 		$authorUrl = '';
+		$adiy=isset($userdiy[$authorId])?$userdiy[$authorId]:$authorId;
 		switch(Control::get('url_type')){
 			case '1':
-				$authorUrl = IDEA_URL .'?author='.$authorId;
+				$authorUrl = IDEA_URL .'?author='.$adiy;
 				if($page){$authorUrl .= '&page=';}
 				break;
 			default:
-				$authorUrl = IDEA_URL .'author/'.$authorId;
+				$authorUrl = IDEA_URL .'author/'.$adiy;
 				if($page){$authorUrl .= '/page/';}
 				break;
 		}

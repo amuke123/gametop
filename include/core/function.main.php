@@ -265,4 +265,38 @@ function getIp(){//获取用户ip地址
     }
     return $ip;
 }
+
+
+function baiduTj($url,$key='0IY6JuKdO6j30TdC'){
+	$urls = array($url);
+	$api = 'http://data.zz.baidu.com/urls?site=www.ideashu.cn&token='.$key;
+	$ch = curl_init();
+	$options =  array(
+		CURLOPT_URL => $api,
+		CURLOPT_POST => true,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_POSTFIELDS => implode("\n", $urls),
+		CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+	);
+	curl_setopt_array($ch, $options);
+	$result = curl_exec($ch);
+	//echo $result;
+}
+
+function shenmaTj($url,$key='TI_253979fec56560604af8da0bf2f98487'){
+	$urls = array($url);
+	$api = 'https://data.zhanzhang.sm.cn/push?site=www.ideashu.cn&user_name=amuke123@foxmail.com&resource_name=mip_add&token='.$key;
+	$ch = curl_init();
+	$options =  array(
+		CURLOPT_URL => $api,
+		CURLOPT_POST => true,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_POSTFIELDS => implode("\n", $urls),
+		CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+	);
+	curl_setopt_array($ch, $options);
+	$result = curl_exec($ch);
+	//echo $result;
+}
+
 ?>
