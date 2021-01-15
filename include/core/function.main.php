@@ -91,6 +91,7 @@ function setUTF8($str){//转化为统一编码;
 function updateCacheAll($tb=null){//更新全部缓存
 	$cache=Conn::getCache();
 	$cache->updateCache($tb);
+	Sitemap::setXml('sitemap');
 }
 
 function getImgPath($tempath){

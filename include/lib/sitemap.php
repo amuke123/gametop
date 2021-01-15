@@ -2,12 +2,28 @@
 class Sitemap{
 	
 	static function setXml($sitemap_name,$key=false){
-		$path = IDEA_ROOT .'/'.$sitemap_name;
-		$xml = self::buildXML();
-		if(!is_file($path)||(time()-24*3600)>filemtime($path)){
+		$data = self::getData();
+		$path = IDEA_ROOT .'/'.$sitemap_name.'.xml';
+		$path2 = IDEA_ROOT .'/'.$sitemap_name.'.html';
+		$path3 = IDEA_ROOT .'/'.$sitemap_name.'.txt';
+		
+		$xml = self::buildXML($data);
+		$html = self::buildHTML($data);
+		$txt = self::buildTXT($data);
+		
+		/**if(!is_file($path)||(time()-24*3600)>filemtime($path)){
 			@file_put_contents($path,$xml);
 		}
-		if($key){@file_put_contents($path,$xml);}
+		if(!is_file($path2)||(time()-24*3600)>filemtime($path2)){
+			@file_put_contents($path2,$html);
+		}
+		if(!is_file($path3)||(time()-24*3600)>filemtime($path3)){
+			@file_put_contents($path3,$txt);
+		}**/
+		//if($key){}
+		@file_put_contents($path,$xml);
+		@file_put_contents($path2,$html);
+		@file_put_contents($path3,$txt);
 	}
 	static function getData(){
 		$cache = Conn::getCache();
@@ -52,8 +68,29 @@ class Sitemap{
 		
 		return $data;
 	}
-	static function buildXML(){
-		$data = self::getData();
+	static function buildTXT($data){
+		$txt = "";
+		foreach($data as $value){
+			extract($value);
+			$txt .= htmlspecialchars($url)."\n";
+		}
+		return $txt;
+	}
+
+	static function buildHTML($data){
+		$html = "<html><head><meta charset='utf-8'><title>". SITE_NAME ." - 站点地图</title></head><body><h1>". SITE_NAME ." - 站点地图</h1>";
+		foreach($data as $value) {
+			extract($value);
+			$html .= self::generate2($url);
+		}
+		$html .= '</body></html>';
+		return $html;
+	}
+	static function generate2($url) {
+		$url = htmlspecialchars($url);
+		return '<p><a href="'.$url.'">'.$url.'</a></p>';
+	}
+	static function buildXML($data){
 		$xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n";
 		foreach($data as $value) {
 			extract($value);

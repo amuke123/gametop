@@ -14,6 +14,7 @@ spl_autoload_register("mkAutoload");
 
 $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 baiduTj($url);
+shenmaTj($url);
 
 //权限
 define('ROLE_ADMIN','admin');
