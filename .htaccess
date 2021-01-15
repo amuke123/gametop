@@ -1,7 +1,9 @@
 <IfModule mod_rewrite.c>
-                       RewriteEngine on
-                       RewriteCond %{REQUEST_FILENAME} !-f
-                       RewriteCond %{REQUEST_FILENAME} !-d
-                       RewriteBase /
-                       RewriteRule . /index.php [L]
-                    </IfModule>
+	RewriteEngine on
+	RewriteCond %{SERVER_PORT} !^443$
+	RewriteRule ^(.*)$ https://%{SERVER_NAME}/$1 [L,R]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteBase /
+	RewriteRule . /index.php [L]
+</IfModule>
