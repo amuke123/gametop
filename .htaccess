@@ -2,6 +2,8 @@
 	RewriteEngine on
 	RewriteCond %{SERVER_PORT} !^443$
 	RewriteRule ^(.*)$ https://%{SERVER_NAME}/$1 [L,R]
+	RewriteCond %{HTTP_HOST} ^ideashu.cn [NC]
+    RewriteRule ^(.*)$ https://www.ideashu.cn/$1 [R=301,L]
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteBase /
