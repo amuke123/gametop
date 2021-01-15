@@ -38,7 +38,6 @@ define('SITE_NAME',Control::get('sitename'));//网站名称
 //echo SITE_NAME;
 
 $mkHooks=array();
-Sitemap::setXml();
 
 define('ADMIN_TYPE','admin');//后台路径
 define('TPLS_PATH',IDEA_URL .'content/template/');//模板库目录
