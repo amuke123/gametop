@@ -423,3 +423,22 @@ footer{padding:10px 0px;}
 .f_list a{margin:0px 15px;color:#333;font-size:15px;font-weight:bold;}
 .f_info{line-height:50px;font-size:12px;}
 
+@media screen and (max-width:780px){
+	.h_nav ul li{margin: 0px 15px;}
+	.h_login{position:absolute;top:5px;right:20px;}
+	.h_logo{width:calc(100% - 20px);margin:0px;padding:10px;}
+	.c_top_left{width:100%;height:auto;padding-bottom:15px;}
+	.c_top_right{width:100%;}
+	.c_top_list li{padding:0px 10px;}
+	.c_cont_left{width:calc(100% - 40px);}
+	.c_cont_right, .c_cont_hot{width:calc(100% - 40px);}
+	.c_cl_li_left{width:100%;}
+	.c_cl_li_right{width:100%;margin-top:20px;}
+	.c_li_img{width:100%;}
+	.list_li li{width:calc(100% - 20px);padding:20px 10px;}
+	.c_c_list ul li{width:calc(100% - 20px);padding:20px 10px;}
+}
+
+
+
+
