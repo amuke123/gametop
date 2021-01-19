@@ -36,7 +36,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 					</div>
 					<div class="d_contc"><p>---</p></div>
 					<div class="d_contc">转载请注明本文标题和链接：《 <a href="<?php echo Url::log($aid);?>"><?php echo $art_title;?></a> 》</div>
-					<div class="d_tag"><b>TAG：</b>	<?php echo getTag($art_tags);?></div>
+					<div class="d_tag"><b>TAG：</b>	<?php echo getTag($art_tags);?><div class="clear"></div></div>
 					<div class="d_good">
 						<?php $code=Checking::getAjCode(12);?>
 						<input type="hidden" name='ajcode' id='ajcode' value="<?php echo $code;?>" />

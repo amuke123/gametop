@@ -4,7 +4,8 @@
 .c1{padding:0px;}
 header{width:100%;border-bottom:1px solid #eee;}
 .h_logo{margin:10px 10px 10px 0px;height:50px;}
-.h_logo a img{height:100%;}
+.h_logo a b{line-height:50px;font-size:24px;padding:0px 15px;float:left;display:none;color:#333;font-family:'xiaowei';font-weight:normal;}
+.h_logo a img{height:100%;float:left;}
 .h_nav{margin:0px 15px;line-height:70px;}
 .h_nav ul li{float:left;margin:0px 25px;position:relative;}
 .h_nav ul li a{display:inline-block;font-size:15px;font-weight:bold;line-height:68px;border-bottom:2px solid transparent;color:#121212;}
@@ -138,9 +139,10 @@ header{width:100%;border-bottom:1px solid #eee;}
 .c_li_des p a:hover.c_c4_gz2{background:#00d46e;}
 .c_li_des{font-size:15px;line-height:25px;text-align:left;}
 .c_li_info{line-height:50px;}
+.c_li_info span{color:#999;font-size:13px;}
 .c_li_info .left a{color:#63a485;}
 .c_li_info .left a:hover{color:#337455;}
-.c_li_info .right a{padding:0px 10px;}
+.c_li_info a{padding:0px 10px;}
 .c_cl_li li:last-child{border:none;line-height:40px;padding-top:20px;font-size:15px;}
 .author_cont .c_cl_li{display:none;padding-top:30px;}
 .author_cont .c_cl_li:first-child{display:block;}
@@ -217,7 +219,7 @@ header{width:100%;border-bottom:1px solid #eee;}
 /*blog*/
 .art_title{width:100%;background:radial-gradient(circle at 50% 0,rgba(255,0,0,0.5),rgba(255,0,0,0) 70.71%),radial-gradient(circle at 6.7% 75%,rgba(0,0,255,0.5),rgba(0,0,255,0) 70.71%),radial-gradient(circle at 93.3% 75%,rgba(0,255,0,0.5),rgba(0,255,0,0) 70.71%) beige;height:200px;padding:200px 0px 0px;}
 .d_bg{width:100%;height:200px;text-align:center;position:relative;}
-.d_bg h2{line-height:40px;color:#fff;font-size:28px;}
+.d_bg h2{line-height:40px;color:#fff;font-size:28px;height:40px;overflow:hidden;}
 .u_info{width:auto;height:60px;margin:20px auto;}
 .u_info div{line-height:30px;width:49%;}
 .u_info div.left{text-align:right;}
@@ -238,9 +240,11 @@ header{width:100%;border-bottom:1px solid #eee;}
 .c_title2{line-height:60px;height:60px;font-size:25px;width:auto;max-width:1002px;margin:0px 10px;position:relative;font-weight:blod;}
 .c_title2 span{display:inline-block;padding:0px 25px;width:auto;background:#fff;position:relative;color:#333;font-family:xiaowei;}
 .c_title2 b{display:block;width:100%;height:1px;position:absolute;top:32px;background:#d4d5d3;}
-.d_tag{margin:0px 10px;text-align:left;line-height:80px;padding:1px 0px;border-bottom:1px solid #eee;}
-.d_tag a{margin:0px 15px;}
+.d_tag{margin:25px 10px;text-align:left;line-height:50px;padding:1px 0px;border-bottom:1px solid #eee;}
+.d_tag a,.d_tag b{float:left;}
+.d_tag a{margin:0px 12px;}
 .d_contc{text-align:left;line-height:30px;padding:20px 10px;}
+.d_contc pre{max-width:100%;overflow:auto;}
 .d_contc p{text-indent:2em;}
 .d_contc img{max-width:100%!important;display:block;margin:0px auto;position:relative;}
 .d_next{line-height:50px;border-top:1px solid #eee;margin:0px 10px;padding-top:20px;}
@@ -265,8 +269,8 @@ header{width:100%;border-bottom:1px solid #eee;}
 .comment_cont p{padding:5px 0px;}
 .comment_cont textarea{width:calc(100% - 10px);line-height:22px;font-size:14px;height:100px;border:#d4d5d3 solid 1px;border-radius:3px;padding:5px;}
 .comment_cont textarea:hover{border:#a4a5a3 solid 1px;}
-.comment_cont input{margin-left:15px;line-height:26px;height:26px;border-radius:3px;border:#d4d5d3 solid 1px;padding:0px 5px;}
-.comment_cont input.comment_sub{line-height:30px;height:30px;border:none;padding:0px 25px;background:#73b495;color:#fff;}
+.comment_cont input{margin-right:10px;line-height:26px;height:26px;border-radius:3px;border:#d4d5d3 solid 1px;padding:0px 5px;}
+.comment_cont input.comment_sub{line-height:30px;height:30px;border:none;padding:0px 25px;background:#73b495;color:#fff;margin-left:10px;margin-right:0px;}
 .comment_cont input:hover.comment_sub{background:#439475;}
 .comment_header{line-height:160px;color:rgba(240,100,100,0.5);font-size:28px;font-family:xiaowei;}
 .avatar{width:40px;height:40px;margin-right:10px;border-radius:50%;margin-top:10px;border-radius:50%;overflow:hidden;box-shadow:inset -2px -2px 5px #333;}
@@ -424,19 +428,43 @@ footer{padding:10px 0px;}
 .f_info{line-height:50px;font-size:12px;}
 
 @media screen and (max-width:780px){
-	.h_nav ul li{margin: 0px 15px;}
-	.h_login{position:absolute;top:5px;right:20px;}
-	.h_logo{width:calc(100% - 20px);margin:0px;padding:10px;}
+	.h_nav{margin:0px;width:98%;margin:0px 1%;}
+	.h_nav ul{display:flex;width:100%;justify-content:space-around;}
+	.h_nav ul li{margin:0px;}
+	.h_s{width:100%;}
+	.h_search{width:100%;margin:19px 0px;}
+	.h_search form{display:inline-block;max-width:267px;margin:0px auto;position:relative;}
+	.h_search input.h_s_key{width:200px;}
+	.h_user,.h_login{position:absolute;top:5px;right:15px;}
+	.h_logo{width:calc(100% - 20px);margin:0px;padding:10px;border-bottom:1px solid #eee;}
+	.h_logo a{display:inline-block;height:100%;}
+	.h_logo a b{display:block;}
 	.c_top_left{width:100%;height:auto;padding-bottom:15px;}
 	.c_top_right{width:100%;}
 	.c_top_list li{padding:0px 10px;}
 	.c_cont_left{width:calc(100% - 40px);}
-	.c_cont_right, .c_cont_hot{width:calc(100% - 40px);}
+	.c_cont_right, .c_cont_hot{width:calc(100% - 40px);margin-top:20px;}
 	.c_cl_li_left{width:100%;}
 	.c_cl_li_right{width:100%;margin-top:20px;}
-	.c_li_img{width:100%;}
+	.c_li_img{width:100%;margin-right:0px;margin-bottom:10px;}
 	.list_li li{width:calc(100% - 20px);padding:20px 10px;}
 	.c_c_list ul li{width:calc(100% - 20px);padding:20px 10px;}
+	.c_line li.two b a, .c_line li.two span a{padding:0px 15px;}
+	.c_c_list ul li a p{display:block;}
+	.c_li_info .left,.c_li_info .right{text-align:right;width:100%;float:right;}
+	.c_li_info .left a{padding-left:10px;padding-right:0px;}
+	.c_li_info .right a{padding:0px;}
+	.c_li_info .right{display:flex;justify-content:space-between;}
+	.c_cl_li li h2{height:auto;max-height:80px;line-height:40px;padding:10px 0px;}
+	.comment_header{font-size:24px;}
+	.d_good a{margin:0px 5px;padding:0px 20px;}
+	.d_next .left,.d_next .right{width:100%;text-align:left;}
+	.d_ac{width:100%;margin-left:0px;left:0px;}
+	.d_ac ul li i{margin:0px;margin-right:10px;}
+	.d_good a i{margin-right:15px;}
+	.comment_cont p input:first-child{width:70px;}
+	.comment_cont input.comment_sub{padding:0px 12px;}
+	.hint{width:84%;margin:0px;left:5%;padding:20px 3%;}
 }
 
 

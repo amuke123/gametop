@@ -33,13 +33,13 @@ require_once View::getView('function');
 	<div class="content">
 		<header>
 			<div class="center">
-				<div class="left h_logo"><a href="<?php echo IDEA_URL;?>"><img src="<?php echo TEMPLATE_URL;?>images/logo.png" /></a></div>
+				<div class="left h_logo"><a href="<?php echo IDEA_URL;?>"><img src="<?php echo TEMPLATE_URL;?>images/logo.png" /><b><?php echo SITE_NAME;?></b></a></div>
 				<div class="left h_nav">
 					<ul>
 						<?php site_nav();?>
 					</ul>
 				</div>
-				<div class="right">
+				<div class="right h_s">
 					<div class="left h_search">
 						<form action="<?php echo IDEA_URL;?>" method="get" name="so">
 							<input class="h_s_key" type="text" name="keyword" placeholder="您有一颗发现美的眼睛" value="">
