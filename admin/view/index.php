@@ -1,8 +1,8 @@
 <div class="c_right">
 	<div class="main">
 		<div class="m_title">管理首页</div>
-		<div class="m_warning">提示：出于演示站完整性考虑，演示站不开放图片上传和删除功能，且每次有用户登录演示后台时，数据都将被自动还原</div>
-		<div class="m_warning">提示：出于演示站完整性考虑，演示站不开放图片上传和删除功能，且每次有用户登录演示后台时，数据都将被自动还原</div>
+		<!--div class="m_warning">提示：出于演示站完整性考虑，演示站不开放图片上传和删除功能，且每次有用户登录演示后台时，数据都将被自动还原</div>
+		<div class="m_warning">提示：出于演示站完整性考虑，演示站不开放图片上传和删除功能，且每次有用户登录演示后台时，数据都将被自动还原</div-->
 		<div class="m_info left">
 			<div class="m_i_title"><i class="icon aicon-info"></i>站点信息</div>
 			<div class="m_i_list">
