@@ -56,7 +56,7 @@ header{width:100%;border-bottom:1px solid #eee;}
 .c_line li.one b{display:inline-block;height:50%;margin-bottom:2px;overflow:hidden;float:left;width:100%;}
 .c_line li.two{flex:2;position:relative;}
 .c_line li.two b{position:absolute;left:0px;top:30px;}
-.c_line li.two b a,.c_line li.two span a{display:inline-block;padding:0px 25px;border-radius:0px 5px 5px 0px;line-height:40px;font-weight:normal;color:#fff;}
+.c_line li.two b a,.c_line li.two span a{display:inline-block;padding:0px 15px;border-radius:0px 5px 5px 0px;line-height:40px;font-weight:normal;color:#fff;}
 .c_line li.two b a{background:#801E1EAA;font-family:'xiaowei';font-size:18px;}
 .c_line li.two b a:hover{background:#801E1EDD;}
 .c_line li.two span a{background:#33333399;}
