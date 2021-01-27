@@ -15,10 +15,10 @@ if(isset($_POST['type'])){
 			case 'good':
 				$nowdate=date("Y-m-d");
 				if(!empty($_SESSION['ids'])){$sslist=explode(",",$_SESSION['ids']);}else{$sslist=array();}
-				if($_SESSION['goodnum']==$nowdate && in_array($aid,$sslist)){
+				if(isset($_SESSION['goodnum']) && $_SESSION['goodnum']==$nowdate && in_array($aid,$sslist)){
 					$data['text']="您今天已经赞过啦";
 				}else{
-					if($_SESSION['goodnum']!=$nowdate){$_SESSION['ids']="";}
+					if(!isset($_SESSION['goodnum']) || $_SESSION['goodnum']!=$nowdate){$_SESSION['ids']="";}
 					$sql="SELECT * FROM ". DB_PRE ."article WHERE `id`=".$aid;
 					$garr = $db->getOnce($sql);
 					$num1=$garr['goodnum']+1;
@@ -33,10 +33,10 @@ if(isset($_POST['type'])){
 			case 'bad':
 				$nowdate=date("Y-m-d");
 				if(!empty($_SESSION['ids2'])){$sslist=explode(",",$_SESSION['ids2']);}else{$sslist=array();}
-				if($_SESSION['badnum']==$nowdate && in_array($aid,$sslist)){
+				if(isset($_SESSION['badnum']) && $_SESSION['badnum']==$nowdate && in_array($aid,$sslist)){
 					$data['text']="您今天已经踩过啦";
 				}else{
-					if($_SESSION['badnum']!=$nowdate){$_SESSION['ids2']="";}
+					if(!isset($_SESSION['badnum']) || $_SESSION['badnum']!=$nowdate){$_SESSION['ids2']="";}
 					$sql="SELECT * FROM ". DB_PRE ."article WHERE `id`=".$aid;
 					$garr = $db->getOnce($sql);
 					$num2=$garr['badnum']+1;
