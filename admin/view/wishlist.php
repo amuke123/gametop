@@ -38,7 +38,7 @@
 						<span><?php echo $widhnum;?></span>
 						<span><?php echo $value['date']!=''?date("Y-m-d H:i:s",$value['date']):'';?></span>
 						<span><?php echo $value['lastdate']!=''?date("Y-m-d H:i:s",$value['lastdate']):'';?></span>
-						<span><?php echo $value['text'];?></span>
+						<span title="<?php echo $value['text'];?>"><?php echo mb_substr($value['text'],0,18);?>...</span>
 						<span><a href="javascript:showOrHide('<?php echo $value['id']."','".IDEA_URL."','";echo $value['show']==0?'1':'0';?>','wishlist');"><?php echo $value['show']==0?'<img title="隐藏" src="'. ADMIN_URL .'/view/static/images/plugin_inactive.gif" />':'<img title="显示" src="'. ADMIN_URL .'/view/static/images/plugin_active.gif" />';?></a></span>
 						<span><?php echo $value['follownum'];?></span>
 						<span><?php echo $value['likenum'];?></span>

@@ -24,7 +24,9 @@ $arts=art_Model::getArtList($draft,$examine,$rolestr,$keyword,$startnum,$pagenum
 $counts=art_Model::getArtsNum($draft,$examine,$rolestr,$keyword);
 $artnumb=$counts[0]['total'];
 $pages=ceil($artnumb/$pagenum);
-$urlpre=ADMIN_URL .'article.php?page=';
+$urlpre=ADMIN_URL .'article.php?';
+if(isset($_GET['sortid'])){$urlpre.='sortid='.$_GET['sortid'].'&';}
+$urlpre.='page=';
 $txtsub='篇笔记';
 
 $pagestr=action_Model::pagelist($artnumb,$pages,$pageid,$urlpre,$txtsub,$urlsub);

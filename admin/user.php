@@ -145,7 +145,10 @@ if(isset($_POST['add'])||isset($_POST['edit'])){
 
 $usernumb=user_Model::getUsersNum($examine,$state);
 $pages=ceil($usernumb/$pagenum);
-$urlpre=ADMIN_URL .'user.php?page=';
+$urlpre=ADMIN_URL .'user.php?';
+//if($state=='0'){$urlpre.='state=0&';}
+//if($examine=='0'){$urlpre.='examine=0&';}
+$urlpre.='page=';
 $txtsub='位用户';
 
 $pagestr=action_Model::pagelist($usernumb,$pages,$pageid,$urlpre,$txtsub,$urlsub);

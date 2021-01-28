@@ -51,7 +51,11 @@ $urlsub .= $examine=='0'?'&examine=0':'';
 
 $saynumb=say_Model::getSayNum($artid,$sqltem);
 $pages=ceil($saynumb/$pagenum);
-$urlpre=ADMIN_URL .'say.php?page=';
+$urlpre=ADMIN_URL .'say.php?';
+//if($god=='0'){$urlpre.='god=0&';}
+//if($good=='0'){$urlpre.='good=0&';}
+//if($examine=='0'){$urlpre.='examine=0&';}
+$urlpre.='page=';
 $txtsub='条评论';
 
 $pagestr=action_Model::pagelist($saynumb,$pages,$pageid,$urlpre,$txtsub,$urlsub,$artid);
