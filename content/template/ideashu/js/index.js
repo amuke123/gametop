@@ -45,6 +45,19 @@ function changeC2(num=0){
 	}
 }
 
+function setShow(num='0'){
+	var contlist=document.getElementById('cent_lw').getElementsByClassName('cent_li');
+	for(i=0;i<contlist.length;i++){
+		if(num==i){
+			document.getElementById('nav_'+i).className="onlink";
+			contlist[i].style.display="block";
+		}else{
+			document.getElementById('nav_'+i).className="";
+			contlist[i].style.display="none";
+		}
+	}
+}
+
 function changeC4(num=0){
 	var navlist=document.getElementById('author_nav').getElementsByTagName('a');
 	var contlist=document.getElementById('author_cont').getElementsByClassName('c4_list');

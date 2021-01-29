@@ -190,6 +190,10 @@ class Control{
 		);
 		return $tops;
 	}
+	static function getRoles(){
+		$roles = array('admin'=>'管理员','writer'=>'作者','vip0'=>'VIP0','vip1'=>'VIP1','vip2'=>'VIP2','vip3'=>'VIP3','vip4'=>'VIP4','vip5'=>'VIP5','vip6'=>'VIP6','vip7'=>'VIP7');
+		return $roles;
+	}
 	
 	static function gettime(){//时区列表
 		$timelist = array(

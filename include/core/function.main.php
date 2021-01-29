@@ -259,6 +259,33 @@ function getIps(){//获取用户ip地址
     return $ip;
 }
 
+
+function hideEmail($email=''){//email部分隐藏
+	if(!empty($email)){
+		$emails = explode('@',$email);
+		$count = strlen($emails[0]);
+		if ($count > 3) {
+			$start = substr($emails[0], 0, 2);
+			$end = substr($emails[0], -1);
+		}else{
+			$start = substr($emails[0], 0, 1);
+			$end = '';
+		}
+		$ee=$start. '****' . $end . '@' . $emails[1];
+	}else{
+		$ee='';
+	}
+    return $ee;
+}
+
+
+function getToNowDays($date){//获取注册天数
+	$temd=time()-$date;
+	$d=floor($temd/(3600*24));
+	$txt=$d.' 天';
+	return $txt;
+}
+
 function getIp(){//获取用户ip地址
     $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
     if (!filter_var($ip, FILTER_VALIDATE_IP)) {

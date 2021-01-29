@@ -376,6 +376,7 @@ header{width:100%;border-bottom:1px solid #eee;}
 .cent_top li b{line-height:100px;font-size:42px;font-weight:normal;color:green;padding:0px 10px;}
 .cent_nav{margin-bottom:10px;background:#fff;}
 .cent_nav p{line-height:60px;text-align:left;padding:0px 30px;}
+.cent_nav p a{display:inline-block;padding:0px 5px;}
 .cent_cont{margin-bottom:10px;background:#fff;padding:15px 30px;}
 .cent_title{padding:10px 0px;}
 .cent_title p{line-height:60px;font-size:24px;}
@@ -383,6 +384,19 @@ header{width:100%;border-bottom:1px solid #eee;}
 .cent_title p b{display:inline-block;border-bottom:2px solid #eee;position:relative;font-weight:normal;}
 .cent_title p b:before{content:'';position:absolute;bottom:-2px;width:50%;background:red;height:2px;margin-left:25%;transition:all .5s;}
 .cent_title p:hover b:before{width:100%;margin-left:0%;}
+
+.cent_li{margin-bottom:10px;background:#fff;padding:20px 40px;}
+.cent_li li{line-height:45px;border-bottom:1px solid #eee;margin-bottom:10px;padding:15px 0px;}
+.cent_li p{text-align:left;position:relative;}
+.cent_li li p b{font-size:15px;}
+.cent_li li p span{display:inline-block;padding-right:20px;line-height:35px;position:relative;margin:5px 0px;}
+.cent_li li p input.cl{padding:0px;border:none;background:none;}
+.cent_li li p input.ptt{line-height:35px;border-radius:5px;border:#ddd solid 1px;padding:0px 15px;width:240px;}
+.cent_li li p select{line-height:35px;height:35px;border-radius:5px;border:#ddd solid 1px;padding:0px 15px;width:240px;}
+.cent_li li p textarea{display:inline-block;min-width:480px;line-height:28px;border-radius:5px;border:#ccc solid 1px;padding:5px 10px;vertical-align:middle;}
+.cent_li p em{display:inline-block;margin:15px 0px;}
+.cent_li p em input{padding:0px 25px;font-size:15px;font-weight:400;line-height:35px;text-align:center;cursor:pointer;border:1px solid transparent;border-radius:4px;margin-right:5px;width:auto;color:#fff;background:#428bca;border-color:#357ebd;}
+
 
 .m_list{width:100%;display:table;margin-top:15px;}
 .m_list p{display:table-row;line-height:45px;padding:0px 10px;width:auto;float:none;margin:0px;}
