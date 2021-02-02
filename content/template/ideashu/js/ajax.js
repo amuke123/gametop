@@ -66,6 +66,9 @@ function callback(){
 			console.log(result);
 			var json = eval("(" + result + ")");
 			switch (json.action){
+				case 'sendid':
+					setnewcode(60,json.text);
+					break;
 				case 'readmore':
 					var moremk=document.getElementById('li_more');
 					moremk.insertAdjacentHTML('beforeBegin',json.text);
@@ -96,6 +99,24 @@ function callback3(){
 			}
 		}
 	}
+}
+
+function setnewcode(time,tstext){
+	var key=time;
+	var mailcode=document.getElementById('mailcode');
+	if(tstext==''){
+		mailcode.disabled=true;
+		ddin=setInterval(function(){
+			time--;
+			if(time>0){
+				mailcode.value = '等待 '+time+' 秒'
+			}else{
+				mailcode.value = '重新获取';
+				mailcode.disabled=false;
+				clearInterval(ddin);
+			}
+		},1000);
+	}else{alert(tstext);}
 }
 
 function ts(str){

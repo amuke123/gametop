@@ -64,15 +64,15 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 						<div class="cent_li">
 							<li>
 								<p><b>邮箱</b></p>
-								<p><span><?php echo hideEmail($userinfo['email']);?> </span><span><img align="absmiddle" title="<?php echo $userinfo['emailok']?'已认证':'未认证';?>" src="<?php echo IDEA_URL .ADMIN_TYPE .'/view/static/images/';echo $userinfo['emailok']?'onsel.gif':'onsel2.gif';?>"></span><span><a href="#" title="修改/认证"><i class="icon aicon-write"></i>&nbsp;</a></span></p>
+								<p><span><?php echo hideEmail($userinfo['email']);?> </span><span><img align="absmiddle" title="<?php echo $userinfo['emailok']?'已认证':'未认证';?>" src="<?php echo IDEA_URL .ADMIN_TYPE .'/view/static/images/';echo $userinfo['emailok']?'onsel.gif':'onsel2.gif';?>"></span><span><a href="javascript:xg_pw('email','<?php echo IDEA_URL;?>');" title="<?php echo $userinfo['emailok']?'修改':'绑定';?>"><i class="icon aicon-write"></i><?php echo $userinfo['emailok']?'修改':'绑定';?></a></span></p>
 							</li>
 							<li>
 								<p><b>手机</b></p>
-								<p><span><?php if(!empty($userinfo['tel'])){echo substr_replace($userinfo['tel'], '****', 5, 4);}?></span><span><img align="absmiddle" title="<?php echo $userinfo['telok']?'已认证':'未认证';?>" src="<?php echo IDEA_URL .ADMIN_TYPE .'/view/static/images/';echo $userinfo['telok']?'onsel.gif':'onsel2.gif';?>"></span><span><a href="#" title="修改/认证"><i class="icon aicon-write"></i>&nbsp;</a></span></p>
+								<p><span><?php if(!empty($userinfo['tel'])){echo substr_replace($userinfo['tel'], '****', 5, 4);}?></span><span><img align="absmiddle" title="<?php echo $userinfo['telok']?'已认证':'未认证';?>" src="<?php echo IDEA_URL .ADMIN_TYPE .'/view/static/images/';echo $userinfo['telok']?'onsel.gif':'onsel2.gif';?>"></span><span><a href="javascript:xg_pw('tel','<?php echo IDEA_URL;?>');" title="<?php echo $userinfo['telok']?'修改':'绑定';?>"><i class="icon aicon-write"></i><?php echo $userinfo['telok']?'修改':'绑定';?></a></span></p>
 							</li>
 							<li>
 								<p><b>密码</b></p>
-								<p><span><a href="#" title="修改密码"><i class="icon aicon-write"></i>&nbsp;</a></span></p>
+								<p><span><img align="absmiddle" title="密码已设置" src="<?php echo IDEA_URL .ADMIN_TYPE .'/view/static/images/onsel.gif';?>"></span><span><a href="javascript:xg_pw('pw','<?php echo $userinfo["username"];?>');" title="修改密码"><i class="icon aicon-write"></i>修改</a></span></p>
 							</li>
 							<li>
 								<p><b>第三方账号绑定</b></p>
@@ -140,6 +140,16 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 				<div class="clear"></div>
 			</div>
 		</div>
+	</div>
+</div>
+<div class="formbox" id="xgpw">
+	<div class="pw_content">
+		<p id="box_title"></p>
+		<form action="" method="post" name="pwxg" onsubmit="return yzxgpw();">
+			<input type="hidden" name='ajcode' value="<?php echo $code;?>" />
+			<input type="hidden" name="uid" value="<?php echo UID;?>">
+			<div id="box_text"></div>
+		</form>
 	</div>
 </div>
 <script>

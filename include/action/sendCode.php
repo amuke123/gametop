@@ -27,10 +27,11 @@ if(isset($_POST['sendid'])){
 				}else{
 					$text="该账号未注册，请先注册！";
 				}
+			}else if($do=='yzm'){
+				if($type=='email'){Email::sendMail($sendid);}
+				if($type=='tell'){App::sendTell($sendid);}
 			}else{$text="错误操作！";}
-			
 		}
-		
 	}
 	$data['text']=$text;
 	echo json_encode($data);

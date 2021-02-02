@@ -100,3 +100,81 @@ function autoShow(post,list=''){
 		nav.parentElement.className = 'onlink';
 	}
 }
+
+function xg_pw(type="",ttrl){
+	var xgpw = document.getElementById('xgpw');
+	var box_text = document.getElementById('box_text');
+	var box_title = document.getElementById('box_title');
+	var title='';
+	var txt='';
+	if(type=='pw'){
+		title='<strong>修改密码</strong>';
+		txt+='<input type="hidden" name="tp" value="pw">';
+		txt+='<li><span>ID号：</span>'+ttrl+'</li>';
+		txt+='<li><span>原密码：</span><input type="password" name="pw_old" autocomplete="off" required="" placeholder="请输入原密码"></li>';
+		txt+='<li><span>新密码：</span><input type="password" name="password1" autocomplete="off" required="" placeholder="请输入新密码"></li>';
+		txt+='<li><span>确认密码：</span><input type="password" name="password2" autocomplete="off" required="" placeholder="请再次输入新密码"></li>';
+		txt+='<li><span></span>';
+		txt+=' <strong><input type="submit" class="xg" name="xgpw" value="确定"></strong>';
+		txt+=' <strong><input type="button" onclick="javascript:qx_pw();" class="qx" value="取消"></strong>';
+		txt+='</li>';
+	}else if(type=='email'){
+		title='<strong>修改/绑定邮箱</strong>';
+		txt+='<input type="hidden" name="tp" value="email">';
+		txt+='<li><span>密码：</span><input type="password" name="pw_old" autocomplete="off" required="" placeholder="请输入密码"></li>';
+		txt+='<li><span>邮箱：</span><input type="text" name="sendid" class="form_full" id="email" required="" placeholder="邮箱"></li>';
+		txt+='<li><span>验证码：</span><input type="text" name="code" class="form_half" required="" placeholder="验证码">';
+		txt+='<input type="button" class="form_bt2" value="获取验证码" id="mailcode" onclick="sendMail(\''+ttrl+'\');" name="mailcode"></li>';
+		txt+='<li><span></span>';
+		txt+=' <strong><input type="submit" class="xg" name="xgemail" value="确定"></strong>';
+		txt+=' <strong><input type="button" onclick="javascript:qx_pw();" class="qx" value="取消"></strong>';
+		txt+='</li>';
+	}else if(type=='tel'){
+		title='<strong>修改/绑定手机</strong>';
+		txt+='<input type="hidden" name="tp" value="tel">';
+		txt+='<li><span>密码：</span><input type="password" name="pw_old" autocomplete="off" required="" placeholder="请输入密码"></li>';
+		txt+='<li><span>手机号：</span><input type="text" name="sendid" class="form_full" id="email" required="" placeholder="手机号"></li>';
+		txt+='<li><span>验证码：</span><input type="text" name="code" class="form_half" required="" placeholder="验证码">';
+		txt+='<input type="button" class="form_bt2" value="获取验证码" id="mailcode" onclick="sendTell(\''+ttrl+'\');" name="mailcode"></li>';
+		txt+='<li><span></span>';
+		txt+=' <strong><input type="submit" class="xg" name="xgtel" value="确定"></strong>';
+		txt+=' <strong><input type="button" onclick="javascript:qx_pw();" class="qx" value="取消"></strong>';
+		txt+='</li>';
+	}
+	box_title.innerHTML=title;
+	box_text.innerHTML=txt;
+	xgpw.style.display="block";
+}
+
+function qx_pw(){
+	var xgpw = document.getElementById('xgpw');
+	xgpw.style.display="none";
+}
+
+function yzxgpw(){
+	if(pwxg.pw_old.value==""){
+		alert('请输入原密码');
+		pwxg.pw_old.focus();
+		return false;
+	}
+	if(pwxg.password1.value==""){
+		alert('请输入新密码');
+		pwxg.password1.focus();
+		return false;
+	}
+	if(pwxg.password2.value==""){
+		alert('请输入确认密码');
+		pwxg.password2.focus();
+		return false;
+	}
+	if(pwxg.pw_old.value == pwxg.password1.value){
+		alert('新密码不能和原密码相同');
+		pwxg.password1.focus();
+		return false;
+	}
+	if(pwxg.password2.value != pwxg.password1.value){
+		alert('确认密码和新密码不一致');
+		pwxg.password2.focus();
+		return false;
+	}
+}

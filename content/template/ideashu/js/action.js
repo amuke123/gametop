@@ -52,6 +52,38 @@ function outFocus(f_id,path,num=''){//取消关注
 }
 
 
+function sendMail(path){//获取邮箱验证码
+	var ajcode=document.getElementById("ajcode").value;
+	var email=document.getElementById("email").value;
+	if(email==''){alert('请输入邮箱');return false;}
+	var type='email';
+	var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+	if(!reg.test(email)){alert("请输入正确的邮箱");return false;}
+	
+	url = path + 'include/action/sendCode.php';
+	data="ajcode="+ajcode;
+	data+="&sendid="+email;
+	data+="&type="+type;
+	data+="&do=yzm";
+	sendHttpPost(url,data);
+}
+
+function sendTell(path){//获取手机验证码
+	var ajcode=document.getElementById("ajcode").value;
+	var email=document.getElementById("email").value;
+	if(email==''){alert('请输入手机号');return false;}
+	var type='tell';
+	var myreg=/^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+	if(!myreg.test(email)){alert("请输入正确的手机号");return false;}
+	
+	url = path + 'include/action/sendCode.php';
+	data="ajcode="+ajcode;
+	data+="&sendid="+email;
+	data+="&type="+type;
+	data+="&do=yzm";
+	sendHttpPost(url,data);
+}
+
 /**function ispw(){//密码验证
 	if(yzpw.passwords.value==""){
 		alert("密码不能为空！");
