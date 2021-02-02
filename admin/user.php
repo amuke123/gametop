@@ -65,10 +65,6 @@ if($action=='edit'||$action=='add'){
 
 if(isset($_POST['add'])||isset($_POST['edit'])){
 	$datauser=array();
-	$keystr='';
-	$valstr='';
-	$upstr='';
-	$upfile=new Upfile();
 	$userid=isset($_POST['userid'])?$_POST['userid']:'';
 	$ajcode=isset($_POST['ajcode'])?$_POST['ajcode']:'';
 	if($ajcode==$_SESSION['ajcode']){
@@ -115,27 +111,8 @@ if(isset($_POST['add'])||isset($_POST['edit'])){
 		$datauser['order']=isset($_POST['order'])?$_POST['order']:'';
 		$datauser['diyurl']=isset($_POST['userurl'])?$_POST['userurl']:'';
 		$datauser['description']=isset($_POST['description'])?$_POST['description']:'';
-		foreach($datauser as $keys => $vals){
-			$keystr.="`".$keys."`,";
-			$valstr.="'".$vals."',";
-			$upstr.="`".$keys."`='".$vals."',";
-		}
-		$keystr=trim($keystr,',');
-		$valstr=trim($valstr,',');
-		$upstr=trim($upstr,',');
-		if($userid==''){
-			$sqladd="INSERT INTO `". DB_PRE ."user` (`id`,`ischeck`,`role`,".$keystr.") VALUES (NULL,'1','writer',".$valstr.");";
-			$text="创建失败";
-		}else{
-			$sqladd="UPDATE `" . DB_PRE . "user` SET ".$upstr." WHERE `id`=".$userid;
-			$text="修改失败";
-		}
-		//echo $sqladd;
-		if(!$db->query($sqladd)){
-			echo "<script>alert('".$text."');</script>";
-		}
-		updateCacheAll('sta');
-		echo "<script>location.href='".ADMIN_URL ."user.php';</script>";exit;
+		
+		if(user_Model::addLine($datauser,'user',$userid)){echo "<script>location.href='".ADMIN_URL ."user.php';</script>";exit;}
 		
 	}else{
 		echo "<script>alert('非法操作');window.history.back();</script>";exit;

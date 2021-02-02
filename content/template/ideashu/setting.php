@@ -28,6 +28,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 						<div class="line2"></div>
 					</div>
 				</div>
+				<?php $code=Checking::getAjCode(12);?>
 				<div class="right cent_right">
 					<div class="cent_nav">
 						<p>您的位置： <a href="<?php echo Url::setting(UID);?>">设置 ▸</a><a href="<?php echo Url::setting(UID);echo $settype;?>"><?php echo  $settxt;?></a></p>
@@ -35,6 +36,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 					<div class="cent_lw" id="cent_lw">
 						<div class="cent_li">
 							<form action="" method="post">
+								<input type="hidden" name='ajcode' id='ajcode' value="<?php echo $code;?>" />
 								<li>
 									<p><b>昵称</b></p>
 									<p><span><input type="text" class="ptt" name="nickname" value="<?php echo $userinfo['nickname'];?>"></span></p>
@@ -55,7 +57,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 									<p><b>介绍一下自己：</b></p>
 									<p><span><textarea name="description" placeholder="留下点什么吧"><?php echo $userinfo['description'];?></textarea></span></p>
 								</li>
-								<p><em><input type="submit" class="xg" name="tj" value="修改"></em></p>
+								<p><em><input type="submit" class="xg" name="jcset" value="修改"></em></p>
 							</form>
 							<div class="line2"></div>
 						</div>

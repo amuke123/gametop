@@ -115,5 +115,32 @@ class user_Model{
 		return $key;
 	}
 	
+	static function addLine($adddata,$dbtb,$sid=''){//创建
+		$db=Conn::getConnect();
+		$keystr='';
+		$valstr='';
+		$upstr='';
+		foreach($adddata as $keys => $vals){
+			$keystr.="`".$keys."`,";
+			$valstr.="'".$vals."',";
+			$upstr.="`".$keys."`='".$vals."',";
+		}
+		$keystr=trim($keystr,',');
+		$valstr=trim($valstr,',');
+		$upstr=trim($upstr,',');
+		if($sid==''){
+			$sqladd="INSERT INTO `". DB_PRE .$dbtb."` (`id`,`ischeck`,`role`,".$keystr.") VALUES (NULL,'1','writer',".$valstr.");";
+			$text="创建失败";
+		}else{
+			$sqladd="UPDATE `". DB_PRE .$dbtb."` SET ".$upstr." WHERE `id`=".$sid;
+			$text="修改失败";
+		}
+		if(!$db->query($sqladd)){
+			echo "<script>alert('".$text."');</script>";
+			return 0;
+		}else{
+			updateCacheAll(array('sta','newArts','wishlist'));return 1;
+		}
+	}
 }
 ?>

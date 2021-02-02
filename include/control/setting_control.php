@@ -37,6 +37,20 @@ class setting_Control{
 		$gzlist=user_Model::getGz($uid);//关注列表
 		$fslist=user_Model::getFs($uid);//粉丝列表
 		
+		if(isset($_POST['jcset'])){
+			$datauser=array();
+			$ajcode=isset($_POST['ajcode'])?$_POST['ajcode']:'';
+			if($ajcode==$_SESSION['ajcode']){
+				$datauser['nickname']=isset($_POST['nickname'])?$_POST['nickname']:'';
+				$datauser['sex']=isset($_POST['sex'])?$_POST['sex']:'2';
+				$datauser['birthday']=isset($_POST['birthday'])?$_POST['birthday']:'';
+				$datauser['description']=isset($_POST['description'])?$_POST['description']:'';
+				if(user_Model::addLine($datauser,'user',$uid)){echo "<script>location.href='".Url::setting($uid)."';</script>";exit;}
+			}else{
+				echo "<script>alert('非法操作');window.history.back();</script>";exit;
+			}
+		}
+		
 		
 		include View::getView('header');
         include View::getView('setting');
