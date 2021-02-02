@@ -126,7 +126,7 @@ function xg_pw(type="",ttrl){
 		txt+='<li><span>验证码：</span><input type="text" name="code" class="form_half" required="" placeholder="验证码">';
 		txt+='<input type="button" class="form_bt2" value="获取验证码" id="mailcode" onclick="sendMail(\''+ttrl+'\');" name="mailcode"></li>';
 		txt+='<li><span></span>';
-		txt+=' <strong><input type="submit" class="xg" name="xgemail" value="确定"></strong>';
+		txt+=' <strong><input type="submit" class="xg" name="xgll" value="确定"></strong>';
 		txt+=' <strong><input type="button" onclick="javascript:qx_pw();" class="qx" value="取消"></strong>';
 		txt+='</li>';
 	}else if(type=='tel'){
@@ -137,7 +137,7 @@ function xg_pw(type="",ttrl){
 		txt+='<li><span>验证码：</span><input type="text" name="code" class="form_half" required="" placeholder="验证码">';
 		txt+='<input type="button" class="form_bt2" value="获取验证码" id="mailcode" onclick="sendTell(\''+ttrl+'\');" name="mailcode"></li>';
 		txt+='<li><span></span>';
-		txt+=' <strong><input type="submit" class="xg" name="xgtel" value="确定"></strong>';
+		txt+=' <strong><input type="submit" class="xg" name="xgll" value="确定"></strong>';
 		txt+=' <strong><input type="button" onclick="javascript:qx_pw();" class="qx" value="取消"></strong>';
 		txt+='</li>';
 	}
@@ -157,24 +157,26 @@ function yzxgpw(){
 		pwxg.pw_old.focus();
 		return false;
 	}
-	if(pwxg.password1.value==""){
-		alert('请输入新密码');
-		pwxg.password1.focus();
-		return false;
-	}
-	if(pwxg.password2.value==""){
-		alert('请输入确认密码');
-		pwxg.password2.focus();
-		return false;
-	}
-	if(pwxg.pw_old.value == pwxg.password1.value){
-		alert('新密码不能和原密码相同');
-		pwxg.password1.focus();
-		return false;
-	}
-	if(pwxg.password2.value != pwxg.password1.value){
-		alert('确认密码和新密码不一致');
-		pwxg.password2.focus();
-		return false;
+	if(pwxg.tp.value=="pw"){
+		if(pwxg.password1.value==""){
+			alert('请输入新密码');
+			pwxg.password1.focus();
+			return false;
+		}
+		if(pwxg.password2.value==""){
+			alert('请输入确认密码');
+			pwxg.password2.focus();
+			return false;
+		}
+		if(pwxg.pw_old.value == pwxg.password1.value){
+			alert('新密码不能和原密码相同');
+			pwxg.password1.focus();
+			return false;
+		}
+		if(pwxg.password2.value != pwxg.password1.value){
+			alert('确认密码和新密码不一致');
+			pwxg.password2.focus();
+			return false;
+		}
 	}
 }

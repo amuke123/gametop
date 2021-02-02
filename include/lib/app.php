@@ -4,8 +4,8 @@ class App{
 		$code = Cellcode::getCode($phoneNumber);
 		$params = array($code);
 		$nationCode = "86";
-		$templId = '808464';
-		$sign = "IDEA手工";
+		$templId = '346441';
+		$sign = "创意书";
         $appid = "1400435435";  //自己的短信appid
         $appkey = "b35f66722cb1cd648a8ce531c32f9eae"; //自己的短信appkey
 		$extend = "";

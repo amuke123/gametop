@@ -50,7 +50,61 @@ class setting_Control{
 				echo "<script>alert('非法操作');window.history.back();</script>";exit;
 			}
 		}
+		if(isset($_POST['xgpw'])){
+			$datauser=array();
+			$ajcode=isset($_POST['ajcode'])?$_POST['ajcode']:'';
+			if($ajcode==$_SESSION['ajcode']){
+				$oldpw=isset($_POST['pw_old'])?$_POST['pw_old']:'';
+				$cxjg=user_Model::getInfo($uid);
+				$password=setUTF8(Checking::jm($oldpw));
+				if(!empty($cxjg['password'])&&$oldpw!=''){
+					if(Checking::checkPw($password,$cxjg['password'])){
+						if(!isset($_POST['password1'])||$_POST['password1']==''){
+							echo "<script>alert('新密码不能为空！');window.history.back();</script>";exit;
+						}else{
+							$datauser['password']=Checking::hashjm(Checking::jm($_POST['password1']));
+						}
+					}else{
+						echo "<script>alert('原密码错误！');window.history.back();</script>";exit;
+					}
+				}
+				if(user_Model::addLine($datauser,'user',$uid)){echo "<script>location.href='".Url::setting($uid)."account';</script>";exit;}
+			}else{
+				echo "<script>alert('非法操作');window.history.back();</script>";exit;
+			}
+		}
 		
+		if(isset($_POST['xgll'])){
+			$datauser=array();
+			$ajcode=isset($_POST['ajcode'])?$_POST['ajcode']:'';
+			if($ajcode==$_SESSION['ajcode']){
+				$oldpw=isset($_POST['pw_old'])?$_POST['pw_old']:'';
+				$cxjg=user_Model::getInfo($uid);
+				$password=setUTF8(Checking::jm($oldpw));
+				if(!empty($cxjg['password'])&&$oldpw!=''){
+					if(Checking::checkPw($password,$cxjg['password'])){
+						$sendId=isset($_POST['sendid'])?$_POST['sendid']:'';
+						$code=isset($_POST['code'])?$_POST['code']:'';
+						$sendType=Checking::checkSendType($sendId);
+						$sendText=$sendType=='tel'?'手机号':'邮箱';
+						if(Checking::checkSendId($sendId,$uid)){
+							echo "<script>alert('".$sendText." ".$sendId." 已被绑定，请使用其他".$sendText."！');window.history.back();</script>";exit;
+						}
+						if(Checking::checkCode($code,$sendId)){
+							$datauser[$sendType]=$sendId;
+							$datauser[$sendType.'ok']='1';
+						}else{
+							echo "<script>alert('验证码错误');window.history.go(-1);</script>";exit;
+						}
+					}else{
+						echo "<script>alert('原密码错误！');window.history.back();</script>";exit;
+					}
+				}
+				if(user_Model::addLine($datauser,'user',$uid)){echo "<script>location.href='".Url::setting($uid)."account';</script>";exit;}
+			}else{
+				echo "<script>alert('非法操作');window.history.back();</script>";exit;
+			}
+		}
 		
 		include View::getView('header');
         include View::getView('setting');

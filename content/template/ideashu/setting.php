@@ -147,7 +147,6 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 		<p id="box_title"></p>
 		<form action="" method="post" name="pwxg" onsubmit="return yzxgpw();">
 			<input type="hidden" name='ajcode' value="<?php echo $code;?>" />
-			<input type="hidden" name="uid" value="<?php echo UID;?>">
 			<div id="box_text"></div>
 		</form>
 	</div>
