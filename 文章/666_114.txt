@@ -1,0 +1,12 @@
+写keywords和description需要注意的几点
+keywords和description在网站的页面上是不显示的，只能在网页的源文件才能看得出来。
+	
+	有时很多排名高的网站不写keywords和description。keywords和description对网站推广到底有多大作用，我们根据多年的建站经验来和大家一起探讨下：
+	
+	keywords和description对网站优化来说还是需要重视点的的，它是对网站总体的一个描述，如果你要优化某个的关键字，keywords和description最好出现一下，但不要多，做多重复1、2次，重复多了就是关键字堆积了。
+	
+	1、keywords和description有总比没有好，链接描文字也起很大作用，有时搜索一条信息，他的标题完全没有和搜索的信息完全不占边，排名却很高。这个问题就说明keywords和description起作用了。
+
+	2、对于会用的人来说很有用的，可以用来控制搜索结果中描述里的关键字分布。
+
+	3、如果有把握写好keywords和description，最好还是加上，如果没有把握写好，避免画蛇添足，最好还是不加。以免影响全局

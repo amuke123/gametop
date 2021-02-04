@@ -1,0 +1,46 @@
+部署https后浏览器提示不安全,不出现绿色小锁?
+网站部署https后,浏览器提示不安全, 不出现绿色小锁图标?
+
+	访问网站后,按f12,浏览器提示:
+	Mixed Content: The page at &#39;https://www.xxx.com/&#39;&#39; was loaded over HTTPS, but requested an insecure image &#39;http://www.xxx.com/uploads/2018/12/3.png&#39;. This content
+	原因是在https页面中，如果调用了http资源，那么浏览器就会抛出一些错误,
+	解决办法:
+	在header中加入Upgrade-Insecure-Requests,会告诉浏览器可以把所属本站的所有http连接升级为https连接,外站请求保持默认;
+	添加header方法:
+	1.iis7
+
+	<img alt="image.png" src="/uploads/allimg/2006/1-20062G13253123.png" style="width: 506px; height: 183px;" title="image.png" />
+
+	    或直接在网站根目录web.config中定义
+
+	&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+	    &lt;configuration&gt;
+	    &lt;system.webServer&gt;
+	     &lt;httpProtocol&gt;
+	     &lt;customHeaders&gt;
+	      &lt;add name=&quot;Content-Security-Policy&quot; value=&quot;upgrade-insecure-requests&quot; /&gt;
+	     &lt;/customHeaders&gt;
+	    &lt;/httpProtocol&gt;
+	    &lt;/system.webServer&gt;
+	   &lt;/configuration&gt;
+
+	2.apache
+
+	  可直接在网站根目录.htaccess中定义
+
+	&lt;IFModule mod_headers.c&gt;
+	      Header add Content-Security-Policyupgrade-insecure-requests
+	    &lt;/IFModule&gt;
+
+	3. nginx
+
+	server {
+	      listen    80;
+	      server_name (myservername);
+	      add_header Content-Security-Policy &quot;upgrade-insecure-requests&quot;;
+	      location / { 
+	        proxy_pass    http://localhost:5000;
+	      }
+	    }
+
+	通过这些设置后绿色小锁就重新出现了。

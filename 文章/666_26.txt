@@ -1,0 +1,292 @@
+Apache服务器禁止非法域名和使用ip访问服务器的设置
+别人将域名非法解析到自己的服务器上，站长会经常碰到，Apache服务器需要做如下设置才能禁止这种情况，该操作也能禁止使用服务器的ip访问。
+	
+	
+		http2.4.1 以后：
+	
+		http2.4.1 以后不再需要NameVirtualHost以及不再支持ServerName * 这种写法。
+	
+		使用ServerName * 会报Invalid ServerName &ldquo;*&rdquo; use ServerAlias to set multiple server names.
+	
+		
+	
+		第一种：直接拒绝
+	
+		打开 httpd.conf 在文件末尾加上一下代码：
+	
+		
+	
+		#禁止所有非法域名
+	
+		&lt;VirtualHost *:80&gt;
+	
+		  ServerName 服务器ip
+	
+		  ServerAlias *
+	
+		  &lt;Location /&gt;
+	
+		    Order Allow,Deny
+	
+		    Deny from all
+	
+		  &lt;/Location&gt;
+	
+		&lt;/VirtualHost&gt;
+	
+		
+	
+		#允许访问的域名
+	
+		&lt;VirtualHost *:80&gt;
+	
+		  DocumentRoot /alidata/www
+	
+		  ServerName www.你的域名
+	
+		  ServerAlias www.你的域名
+	
+		  &lt;Directory &quot;/alidata/www&quot;&gt;
+	
+		    Options Indexes FollowSymLinks
+	
+		    AllowOverride all
+	
+		    Order allow,deny
+	
+		    Allow from all
+	
+		  &lt;/Directory&gt;
+	
+		  &lt;IfModule mod_rewrite.c&gt;
+	
+		    RewriteEngine On
+	
+		    RewriteRule ^(.*)-htm-(.*)$ .php?
+	
+		    RewriteRule ^(.*)/simple/([a-z0-9\_]+\.html)$ /simple/index.php?
+	
+		  &lt;/IfModule&gt;
+	
+		#错误日志保存位置
+	
+		  ErrorLog &quot;/alidata/log/httpd/error.log&quot;
+	
+		  CustomLog &quot;/alidata/log/httpd/info.log&quot; common
+	
+		&lt;/VirtualHost&gt;
+	
+		
+	
+		重启apache服务：service httpd restart
+	
+		第二种：跳转到指定目录或文件
+	
+		打开 httpd.conf 在文件末尾加上一下代码：
+	
+		
+	
+		#禁止所有非法域名
+	
+		&lt;VirtualHost *:80&gt;
+	
+		  DocumentRoot &quot;/alidata/www&quot;
+	
+		  ServerName 服务器ip
+	
+		  ServerAlias *
+	
+		  &lt;Location /alidata/www&gt;
+	
+		    Order Allow,Deny
+	
+		    Allow from all
+	
+		  &lt;/Location&gt;
+	
+		&lt;/VirtualHost&gt;
+	
+		
+	
+		#允许访问的域名
+	
+		&lt;VirtualHost *:80&gt;
+	
+		  DocumentRoot /alidata/www/fdt
+	
+		  ServerName www.fdt-art.com
+	
+		  ServerAlias www.fdt-art.com
+	
+		  &lt;Directory &quot;/alidata/www/fdt&quot;&gt;
+	
+		    Options Indexes FollowSymLinks
+	
+		    AllowOverride all
+	
+		    Order allow,deny
+	
+		    Allow from all
+	
+		  &lt;/Directory&gt;
+	
+		  &lt;IfModule mod_rewrite.c&gt;
+	
+		    RewriteEngine On
+	
+		    RewriteRule ^(.*)-htm-(.*)$ .php?
+	
+		    RewriteRule ^(.*)/simple/([a-z0-9\_]+\.html)$ /simple/index.php?
+	
+		  &lt;/IfModule&gt;
+	
+		#错误日志保存位置
+	
+		  ErrorLog &quot;/alidata/log/httpd/error.log&quot;
+	
+		  CustomLog &quot;/alidata/log/httpd/info.log&quot; common
+	
+		&lt;/VirtualHost&gt;
+	
+		
+	
+		重启apache服务生效
+	
+	http2.4.1以前：
+	
+
+	第一种 直接拒绝访问
+
+	打开 httpd.conf 文件,将一下配置追加到文件最后。
+
+	#直接拒绝所有非法域名
+
+	&lt;VirtualHost *:80&gt;
+
+	  ServerName *
+
+	  ServerAlias *
+
+	  &lt;Location /&gt;
+
+	    Order Allow,Deny
+
+	    Deny from all
+
+	  &lt;/Location&gt;
+
+	  ErrorLog &quot;/alidata/log/httpd/error.log&quot;
+
+	  CustomLog &quot;/alidata/log/httpd/info.log&quot; common
+
+	&lt;/VirtualHost&gt;
+
+	
+
+	#允许的域名
+
+	&lt;VirtualHost *:80&gt;
+
+	  DocumentRoot /alidata/www
+
+	  ServerName www.你的域名
+
+	  ServerAlias www.你的域名
+
+	  &lt;Directory &quot;/alidata/www&quot;&gt;
+
+	    Options Indexes FollowSymLinks
+
+	    AllowOverride all
+
+	    Order allow,deny
+
+	    Allow from all
+
+	  &lt;/Directory&gt;
+
+	  &lt;IfModule mod_rewrite.c&gt;
+
+	    RewriteEngine On
+
+	    RewriteRule ^(.*)-htm-(.*)$ .php?
+
+	    RewriteRule ^(.*)/simple/([a-z0-9\_]+\.html)$ /simple/index.php?
+
+	  &lt;/IfModule&gt;
+
+	  ErrorLog &quot;/alidata/log/httpd/error.log&quot;
+
+	  CustomLog &quot;/alidata/log/httpd/info.log&quot; common
+
+	&lt;/VirtualHost&gt;
+
+	
+
+	重启apache服务：service httpd restart
+
+	
+
+	第二种 跳转到指定目录或文件
+
+	打开 httpd.conf 文件,将一下配置追加到文件最后。
+
+	#所有非法域名跳转到指定目录或文件
+
+	&lt;pre name=&quot;code&quot; class=&quot;html&quot;&gt;&lt;pre name=&quot;code&quot; class=&quot;html&quot;&gt;&lt;VirtualHost *:80&gt;
+
+	#指定目录或文件
+
+	  DocumentRoot &quot;/yun/www&quot;
+
+	  ServerName *
+
+	  ServerAlias *
+
+	&lt;/VirtualHost&gt;
+
+	
+
+	#允许的域名
+
+	&lt;VirtualHost *:80&gt;
+
+	  DocumentRoot /alidata/www/fdt
+
+	  ServerName www.fdt-art.com
+
+	  ServerAlias www.fdt-art.com
+
+	  &lt;Directory &quot;/alidata/www/fdt&quot;&gt;
+
+	    Options Indexes FollowSymLinks
+
+	    AllowOverride all
+
+	    Order allow,deny
+
+	    Allow from all
+
+	  &lt;/Directory&gt;
+
+	  &lt;IfModule mod_rewrite.c&gt;
+
+	    RewriteEngine On
+
+	    RewriteRule ^(.*)-htm-(.*)$ .php?
+
+	    RewriteRule ^(.*)/simple/([a-z0-9\_]+\.html)$ /simple/index.php?
+
+	  &lt;/IfModule&gt;
+
+	#错误日志
+
+	  ErrorLog &quot;/alidata/log/httpd/error.log&quot;
+
+	  CustomLog &quot;/alidata/log/httpd/info.log&quot; common
+
+	&lt;/VirtualHost&gt;
+
+	
+
+	重启apache服务：service httpd restart

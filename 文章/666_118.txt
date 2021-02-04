@@ -1,0 +1,14 @@
+动态网页需要转换成静态网页吗?
+1. 静态<font face="Verdana">网页</font>的特点：友好、速度快、便于收录。缺点：不能实现动态搜索和其他交互式动态功能。而且静态<font face="Verdana">网页</font>占用空间资源相对大些。
+
+2. 动态网页特点：直接从数据库读内容，能很好实现网站的各种动态功能。缺点：速度相对较慢。
+
+分析了动态<font face="Verdana">网页</font>和静态<font face="Verdana">网页</font>的优缺点，那么我们是否需要将动态网页转换成静态网页呢?其实完全没有必要，现在搜索引擎在抓取动态网页方面的技术已经非常成熟。所以大家不要再将自己的动态<font face="Verdana">网页</font>进行静态<font face="Verdana">网页</font>化了。其实动态<font face="Verdana">网页</font>也是发展趋势所在，他突破了很多静态<font face="Verdana">网页</font>不可能实现的功能。使网站更加丰富。
+
+如果你还是觉得静态<font face="Verdana">网页</font>要好些的话，请你注意以下几个方面：
+
+1.不要为了静态化网址而隐藏一些对搜索引擎有价值的信息参数。
+2.不要让你的网址路径过长，对静态<font face="Verdana">网页</font>和动态<font face="Verdana">网页</font>都一样。
+动态化路径有很多有价值的参数会反馈给搜索引擎，便于搜索引擎索引和分析，如果你改成静态<font face="Verdana">网页</font>的话，这些重要的参数将会消失。
+
+自然美才是真的美，用在网站建设上也是一样，不要刻意去追求静态<font face="Verdana">网页</font>，一切以站点的内容为主，好的内容特别是原创的内容不管是动态<font face="Verdana">网页</font>还是静态<font face="Verdana">网页</font>，搜索引擎都是一样对待。

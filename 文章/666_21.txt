@@ -1,0 +1,139 @@
+部署https(ssl)后设置整站301跳转 即将http跳转到https的方法
+很多站长设置了ssl,但不知道如何将http301跳转到https,以下是各个系统跳转代码，希望对您有帮助！
+	
+	1、apache环境
+
+	【直接在apache上部署的SSL】在对应站点根目录下新建一个文件命名为.htaccess。
+
+&lt;IfModulemod_rewrite.c&gt;
+RewriteEngineOn
+RewriteCond%{HTTPS}!^on$[NC]
+RewriteCond%{HTTP_HOST}^(www.)?abc.com$[NC]#将abc.com和www.abc.com跳转到https://www.abc.com,防止apache子站继承上级目录.htaccess受影响
+RewriteRule^(.*)$https://www.abc.com/$1[R=301,L]
+&lt;/IfModule&gt;
+
+	2、linux系统
+
+	编辑.htaccess文件写入以下规则：
+
+&lt;IfModulemod_rewrite.c&gt;
+RewriteEngineOn
+RewriteCond%{HTTP:From-Https}!^on$[NC]
+RewriteCond%{HTTP_HOST}^(www.)?abc.com$[NC]#将abc.com和www.abc.com跳转到https://www.abc.com,防止apache子站继承上级目录.htaccess受影响
+RewriteRule^(.*)$https://www.abc.com/$1[R=301,L]
+&lt;/IfModule&gt;
+
+	3、云主机Nginx环境
+
+	编辑nginx站点配置文件（登录wdcp管理面板中：站点列表-文管-虚拟主机站点文件nginx-对应站点配置文件），添加以下规则。
+
+server
+{
+listen80;
+server_nameabc.com;
+rewrite^(.*)https://www.abc.com$1permanent;#abc.com对应修改为您自已的域名
+}
+
+server
+{
+listen80;
+server_nameabc.com;
+}
+4、云主机Windows系统 IIS7环境
+
+
+	云服务器：【直接在IIS上部署的SSL】在对应站点根目录下新建（通过ftp或登录后直接进入到D:\wwwroot\站点ftp命名目录\wwwroot创建）一个文件命名为web.config并编辑添加以下规则：
+
+&lt;?xmlversion=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&gt;
+&lt;configuration&gt;
+&lt;system.webServer&gt;
+&lt;rewrite&gt;
+&lt;rules&gt;
+&lt;rulename=&quot;301&quot;stopProcessing=&quot;true&quot;&gt;
+&lt;matchurl=&quot;^(.*)$&quot;ignoreCase=&quot;false&quot;/&gt;
+&lt;conditionslogicalGrouping=&quot;MatchAll&quot;&gt;
+&lt;addinput=&quot;{HTTPS}&quot;pattern=&quot;^on$&quot;negate=&quot;true&quot;/&gt;
+&lt;/conditions&gt;
+&lt;actiontype=&quot;Redirect&quot;url=&quot;https://www.abc.com/{R:1}&quot;redirectType=&quot;Permanent&quot;/&gt;
+&lt;/rule&gt;
+&lt;/rules&gt;
+&lt;/rewrite&gt;
+&lt;/system.webServer&gt;
+&lt;/configuration&gt;
+
+	Windows系统 IIS7环境
+
+	注意更改为自己的域名
+
+&lt;?xmlversion=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&gt;
+&lt;configuration&gt;
+&lt;system.webServer&gt;
+&lt;rewrite&gt;
+&lt;rules&gt;
+&lt;rulename=&quot;301&quot;stopProcessing=&quot;true&quot;&gt;
+&lt;matchurl=&quot;^(.*)$&quot;ignoreCase=&quot;false&quot;/&gt;
+&lt;conditionslogicalGrouping=&quot;MatchAll&quot;&gt;
+&lt;addinput=&quot;{HTTP_FROM_HTTPS}&quot;pattern=&quot;^on$&quot;negate=&quot;true&quot;/&gt;
+&lt;/conditions&gt;
+&lt;actiontype=&quot;Redirect&quot;url=&quot;https://www.abc.com/{R:1}&quot;redirectType=&quot;Permanent&quot;/&gt;
+&lt;/rule&gt;
+&lt;/rules&gt;
+&lt;/rewrite&gt;
+&lt;/system.webServer&gt;
+&lt;/configuration&gt;
+
+	5、虚拟主机windows系统
+
+	可以通过ftp或登录后进入到主机管理面板-文件管理,进入wwwroot,新建一个文件命名为web.config并编辑添加以下规则，注意替换为自己的域名。
+
+&lt;?xmlversion=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&gt;
+&lt;configuration&gt;
+&lt;system.webServer&gt;
+&lt;rewrite&gt;
+&lt;rules&gt;
+&lt;rulename=&quot;301&quot;stopProcessing=&quot;true&quot;&gt;
+&lt;matchurl=&quot;^(.*)$&quot;ignoreCase=&quot;false&quot;/&gt;
+&lt;conditionslogicalGrouping=&quot;MatchAll&quot;&gt;
+&lt;addinput=&quot;{HTTP_FROM_HTTPS}&quot;pattern=&quot;^on$&quot;negate=&quot;true&quot;/&gt;
+&lt;/conditions&gt;
+&lt;actiontype=&quot;Redirect&quot;url=&quot;https://www.abc.com/{R:1}&quot;redirectType=&quot;Permanent&quot;/&gt;
+&lt;/rule&gt;
+&lt;/rules&gt;
+&lt;/rewrite&gt;
+&lt;/system.webServer&gt;
+&lt;/configuration&gt;
+
+	6、云主机Windows系统 IIS6环境
+
+	RewriteEngineOn
+
+RewriteCond%{HTTPS}!^on$[NC]
+RewriteRule^(.*)$https://www.abc.com/$1[R=301,L]#www.abc.com对应修改为您自已的域名
+RewriteCond%{HTTP_HOST}!^www\.
+RewriteRule^(.*)$https://www.abc.com$1[R=301,L]#www.abc.com对应修改为您自已的域名
+
+	云主机Windows系统 IIS6环境（香港亚洲数据中心机房）
+
+RewriteEngineOn
+RewriteCond%{HTTP:From-Https}!^on$[NC]
+RewriteRule^(.*)$https://www.abc.com/$1[R=301,L]#www.abc.com对应修改为您自已的域名
+RewriteCond%{HTTP_HOST}!^www\.
+RewriteRule^(.*)$https://www.abc.com$1[R=301,L]#www.abc.com对应修改为您自已的域名
+
+	tomcat环境（云主机）
+
+	在web.xml最后一行&lt;/web-app&gt;代码之前添加如下代码即可
+
+&lt;security-constraint&gt;
+&lt;!--AuthorizationsettingforSSL--&gt;
+&lt;web-resource-collection&gt;
+&lt;web-resource-name&gt;SSL&lt;/web-resource-name&gt;
+&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/web-resource-collection&gt;
+&lt;user-data-constraint&gt;
+&lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;
+&lt;/user-data-constraint&gt;
+&lt;/security-constraint&gt;
+
+	注： 1、discuz使用301方式强制将http跳转到https后会导致后台uc通信失败。
+	   2、通过该方式设置跳转后，如无法正常跳转访问，请单独建立站点绑定https域名，仍在原来站点设置跳转规则。
