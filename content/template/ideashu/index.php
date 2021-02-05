@@ -145,7 +145,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 	<div class="content">
 		<div class="c_cont">
 			<div class="center">
-				<div class="c_ad"><p class="left"></p><p class="right"></p><div class="clear"></div></div>
+				<div class="c_ad"><p class="left"><a target="_blank" href="https://s.click.taobao.com/t?e=m%3D2%26s%3D8eiYO7j4JoQcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAmhNoWCVXce1cnnKp7vRkY9XqZgz9pVRwUUtxbREBgQKqC%2Faz%2FWBinmYWGnZlqAp8cwwE1DSeisDYMsSHLWchUVtQl8vLdysepHjKlMEkHC06du04PdR3Oc9XUfbPSJC%2F02QpUwcKVbRBsyo6kUwi%2Bcv%2FIct653eazL4Qf1nAUKDyxemGfaaDIVsOChAV2X4biGFCzYOOqAQ"><img src="<?php echo TEMPLATE_URL;?>images/1200-100.jpg" /></a></p><p class="right"></p><div class="clear"></div></div>
 				<div class="c_cont_left left">
 					<div class="c_cl_top">
 						<p>新鲜速递</p>
@@ -185,14 +185,14 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 					<div class="c_cr_top">
 						<p><b>一周热点</b></p>
 					</div>
-					<div class="c_cr_hot">
-						<p><b><img src="<?php echo TEMPLATE_URL;?>images/2.jpg" /></b></p>
+					<div class="c_cr_hot c_cr_hot2">
+						<p><b><a target="_blank" href="https://s.click.taobao.com/t?e=m%3D2%26s%3D8eiYO7j4JoQcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAmhNoWCVXce1cnnKp7vRkY9XqZgz9pVRwUUtxbREBgQKqC%2Faz%2FWBinmYWGnZlqAp8cwwE1DSeisDYMsSHLWchUVtQl8vLdysepHjKlMEkHC06du04PdR3Oc9XUfbPSJC%2F02QpUwcKVbRBsyo6kUwi%2Bcv%2FIct653eazL4Qf1nAUKDyxemGfaaDIVsOChAV2X4biGFCzYOOqAQ"><img src="<?php echo TEMPLATE_URL;?>images/250-90.jpg" /></a></b></p>
 						<?php if(!empty($hotArts)){$ii=1;foreach($hotArts as $hotval){?>
 						<li><i <?php echo $ii<4?'class="hot"':'';?>><?php echo $ii++;?></i><a href="<?php echo $hotval['arturl'];?>"><?php echo $hotval['title'];?></a></li>
 						<?php }}?>
 					</div>
 					<div class="c_cr_ad">
-						<p><b><img src="<?php echo TEMPLATE_URL;?>images/2.jpg" /></b></p>
+						<p><b><a target="_blank" href="https://s.click.taobao.com/t?e=m%3D2%26s%3D%2F3OxEk80jXUcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAmhNoWCVXce1%2BzfprQ6FyclXqZgz9pVRwUUtxbREBgQKqC%2Faz%2FWBinm23Uh1a8UOzaoheWQ2Mg%2BxYMsSHLWchUVtQl8vLdysepHjKlMEkHC06du04PdR3Oc9XUfbPSJC%2F02QpUwcKVbRX7%2BliFBjeJfQWJeWE%2FFfPg%3D%3D"><img src="<?php echo TEMPLATE_URL;?>images/250X250.jpg" /></a></b></p>
 					</div>
 				</div>
 				<div class="clear"></div>
