@@ -213,7 +213,7 @@ class action_Model{
 					}
 				}
 			}else{
-				if($pageid=='1'){$str .= '<span>'.$pageid.'</span>';}else{$str .= '<a href="'.$urlpre.$pageid.$urlsub.$astr.$pro.'">'.$pageid.'</a>';}
+				if($pageid=='1'){$str .= '<span>1</span>';}else{$str .= '<a href="'.$urlpre.'1">1</a>';}
 				if(($pageid-4)>1){$str .= ' ... ';}
 				if(($pageid-4)>1){$pstart=($pageid-3);$bc1=0;}else{$pstart=2;$bc1=$pageid-5;}
 				if(($pageid+4)<$pages){$pend=($pageid+3);$bc2=0;}else{$pend=($pages-1);$bc2=($pageid-$pages)+4;}
