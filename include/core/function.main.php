@@ -295,9 +295,9 @@ function getIp(){//获取用户ip地址
 }
 
 
-function baiduTj($url,$key='0IY6JuKdO6j30TdC'){
+function baiduTj($url,$key='2GXleEIFWFAorAhV'){
 	$urls = array($url);
-	$api = 'http://data.zz.baidu.com/urls?site=www.ideashu.cn&token='.$key;
+	$api = 'http://data.zz.baidu.com/urls?site=https://www.ideashu.cn&token='.$key;
 	$ch = curl_init();
 	$options =  array(
 		CURLOPT_URL => $api,
