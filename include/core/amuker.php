@@ -23,6 +23,8 @@ define('ROLE_VISITOR','visitor');
 
 $cache = Conn::getCache();
 
+
+define('CA_UPTIME',Control::get('cache_time'));//榜单更新间隔
 $siteurl=substr(Control::get('siteurl'),-1)=="/"?Control::get('siteurl'):Control::get('siteurl')."/";
 define('IDEA_URL',$siteurl);//网站URL
 

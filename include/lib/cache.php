@@ -602,7 +602,7 @@ class Cache{
 		if(!is_file($cachefile) || filesize($cachefile) <= 0){
 			$this->updateCache($cacheName);
 		}
-		if((time()-7*24*3600)>filemtime($cachefile)){
+		if((time()-3600)>filemtime($cachefile)){//更新间隔1个小时,7*24*3600为七天
 			$this->updateCache($cacheName);
 		}
 		if($fp = fopen($cachefile,'r')){
