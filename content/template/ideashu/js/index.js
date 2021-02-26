@@ -101,6 +101,15 @@ function autoShow(post,list=''){
 	}
 }
 
+function xs_box(e){
+	var box=e.getElementsByClassName('box_hidden')[0];
+	box.style.display="block";
+}
+
+function yc_box(e){
+	e.style.display="none";
+}
+
 function box_line(key=0){
 	var box_show = document.getElementById('box_show');
 	var box_hidden = document.getElementById('box_hidden');
