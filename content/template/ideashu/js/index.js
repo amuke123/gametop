@@ -101,6 +101,21 @@ function autoShow(post,list=''){
 	}
 }
 
+function box_line(key=0){
+	var box_show = document.getElementById('box_show');
+	var box_hidden = document.getElementById('box_hidden');
+	var box_alink = document.getElementById('box_alink');
+	if(key==0){
+		box_show.style.background="none";
+		box_hidden.style.display="none";
+		box_alink.style.display="inline-block";
+	}else{
+		box_show.style.background="#e1e5e3";
+		box_hidden.style.display="block";
+		box_alink.style.display="none";
+	}
+}
+
 function xg_pw(type="",ttrl){
 	var xgpw = document.getElementById('xgpw');
 	var box_text = document.getElementById('box_text');

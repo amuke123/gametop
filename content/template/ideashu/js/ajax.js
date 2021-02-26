@@ -106,13 +106,16 @@ function setnewcode(time,tstext){
 	var mailcode=document.getElementById('mailcode');
 	if(tstext==''){
 		mailcode.disabled=true;
+		mailcode.className="form_bt3";
+		mailcode.value = '等待 '+time+' 秒';
 		ddin=setInterval(function(){
 			time--;
 			if(time>0){
-				mailcode.value = '等待 '+time+' 秒'
+				mailcode.value = '等待 '+time+' 秒';
 			}else{
 				mailcode.value = '重新获取';
 				mailcode.disabled=false;
+				mailcode.className="form_bt2";
 				clearInterval(ddin);
 			}
 		},1000);

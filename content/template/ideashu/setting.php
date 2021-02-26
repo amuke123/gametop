@@ -84,8 +84,13 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 							<li>
 								<p><b>个性域名</b></p>
 								<form action="" method="post">
-									<p><span><?php echo IDEA_URL .'author/';?><i id="diyurl"><?php echo $userinfo['diyurl'];?><input type="text" class="ptt" name="diyurl" value="<?php echo $userinfo['diyurl'];?>"></i></span>
-									<span><a href="#" title="修改"><i class="icon aicon-write"></i>&nbsp;</a></span></p>
+									<p><span><?php echo IDEA_URL .'author/';?><i id="box_show" class="box_show"><?php echo $userinfo['diyurl'];?></i></span>
+									<b id="box_hidden" class="box_hidden">
+										<input type="text" class="ptt" name="diyurl" value="<?php echo $userinfo['diyurl'];?>"><br />
+										<strong><input type="submit" class="xg" name="xgdiy" value="修改"></strong>
+										<strong><input type="button" onclick="javascript:box_line(0);" class="qx" value="取消"></strong>
+									</b>
+									<span id="box_alink"><a href="javascript:box_line(1);" title="修改"><i class="icon aicon-write"></i>&nbsp;</a></span></p>
 								</form>
 							</li>
 							<li>
@@ -103,12 +108,9 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 							<li>
 								<p><b>自定义背景</b></p>
 								<form action="" method="post">
-									<p><span><select name="color">
-										<option value="color">纯色</option>
-										<option value="image">图片</option>
-									</select></span></p>
-									<p><span><input type="color" class="cl" name="bgpic" value="<?php echo $userinfo['bgpic'];?>">
-									<img src="<?php echo $userinfo['bgpic'];?>" /><input type="file" name="bgpic"></span></p>
+									<p><span><input name="bgtype" type="radio" value=""  /> 系统默认</span></p>
+									<p><span><input name="bgtype" type="radio" value="color"  /> 纯色</span><span><input type="color" class="cl" name="bgcolor" value="<?php echo $userinfo['bgpic'];?>"></span></p>
+									<p><span><input name="bgtype" type="radio" value="image" /> 背景图</span><span><img src="<?php echo $userinfo['bgpic'];?>" /><input type="file" name="bgpic"></span></p>
 								</form>
 							</li>
 							<div class="line2"></div>
