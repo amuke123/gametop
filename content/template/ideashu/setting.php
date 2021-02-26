@@ -10,7 +10,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 						<div class="cent_head">
 							<span><img src="<?php echo user_Model::getUserPhoto($userinfo['id']);?>"/></span>
 						</div>
-						<div class="cent_prove"><p><b><a target="_blank" href="<?php echo Url::author($uid);?>"> <?php echo $userinfo['name'];?> </a><?php echo $userinfo['sex']=='2'?'女生/先生':($userinfo['sex']=='0'?'女生':'先生');?></b></p></div>
+						<div class="cent_prove"><p><b><a target="_blank" href="<?php echo Url::author($uid);?>"> <?php echo $userinfo['name'];?> </a><?php echo $userinfo['sex']=='2'?'女士/先生':($userinfo['sex']=='0'?'女士':'先生');?></b></p></div>
 						<div class="cent_mation">
 							<p><b>ID号</b><span><?php echo $userinfo['username'];?></span></p>
 							<p><b>权限</b><span><?php echo $roles[$userinfo['role']];?></span></p>
@@ -84,6 +84,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 							<li>
 								<p><b>个性域名</b></p>
 								<form action="" method="post">
+									<input type="hidden" name='ajcode' value="<?php echo $code;?>" />
 									<p><span><?php echo IDEA_URL .'author/';?><i id="box_show" class="box_show"><?php echo $userinfo['diyurl'];?></i></span>
 									<b id="box_hidden" class="box_hidden">
 										<input type="text" class="ptt" name="diyurl" value="<?php echo $userinfo['diyurl'];?>"><br />
@@ -96,16 +97,17 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 							<li>
 								<p><b>个人中心配色方案</b></p>
 								<form action="" method="post">
+									<input type="hidden" name='ajcode' value="<?php echo $code;?>" />
 									<div class="bgcl">
 										<p><span><select name="colorstyle" onchange="xs_box(this.parentNode.parentNode.parentNode);">
 											<option value="default">默认配色</option>
-											<option value="blue">蓝色</option>
-											<option value="red">红色</option>
-											<option value="orange">橙色</option>
-											<option value="green">绿色</option>
+											<option value="blue" <?php echo $userinfo['colorstyle']=='blue'?'selected':'';?>>蓝色</option>
+											<option value="red" <?php echo $userinfo['colorstyle']=='red'?'selected':'';?>>红色</option>
+											<option value="orange" <?php echo $userinfo['colorstyle']=='orange'?'selected':'';?>>橙色</option>
+											<option value="green" <?php echo $userinfo['colorstyle']=='green'?'selected':'';?>>绿色</option>
 										</select></span></p>
 										<b class="box_hidden">
-											<strong><input type="submit" class="xg" name="xgstyle" value="修改"></strong>
+											<strong><input type="submit" class="xg" name="xgdiy" value="修改"></strong>
 											<strong><input type="button" onclick="yc_box(this.parentNode.parentNode);" class="qx" value="取消"></strong>
 										</b>
 									</div>
@@ -113,13 +115,14 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 							</li>
 							<li>
 								<p><b>个人中心背景</b></p>
-								<form action="" method="post">
+								<form action="" method="post" enctype="multipart/form-data">
+									<input type="hidden" name='ajcode' value="<?php echo $code;?>" />
 									<div class="bgcl">
-										<p><span><input name="bgtype" type="radio" value="default" onchange="xs_box(this.parentNode.parentNode.parentNode);" checked /></span><span>默认背景</span></p>
-										<p><span><input name="bgtype" type="radio" value="color" onchange="xs_box(this.parentNode.parentNode.parentNode);" /></span><span>纯色</span><span><input type="color" class="cl" name="bgcolor" value="<?php echo $userinfo['bgpic'];?>"></span></p>
-										<p><span><input name="bgtype" type="radio" value="image" onchange="xs_box(this.parentNode.parentNode.parentNode);" /></span><span>背景图</span><span><img src="<?php echo $userinfo['bgpic'];?>" /><input type="file" name="bgpic"></span></p>
+										<p><span><input name="bgtype" type="radio" value="default" onchange="xs_box(this.parentNode.parentNode.parentNode);"  <?php echo $userinfo['bgtype']==''?'checked':'';?> /></span><span>默认背景</span></p>
+										<p><span><input name="bgtype" type="radio" value="color" onchange="xs_box(this.parentNode.parentNode.parentNode);" <?php echo $userinfo['bgtype']=='color'?'checked':'';?> /></span><span>纯色</span><span><input type="color" class="cl"  onchange="xs_box(this.parentNode.parentNode.parentNode);" name="bgcolor" value="<?php echo $userinfo['bgpic'];?>"></span></p>
+										<p><span><input name="bgtype" type="radio" value="image" onchange="xs_box(this.parentNode.parentNode.parentNode);" <?php echo $userinfo['bgtype']=='image'?'checked':'';?> /></span><span>背景图</span><span><img src="<?php echo $userinfo['bgpic'];?>" /><input onchange="xs_box(this.parentNode.parentNode.parentNode);" type="file" name="bgpic"></span></p>
 										<b class="box_hidden">
-											<strong><input type="submit" class="xg" name="xgtype" value="修改"></strong>
+											<strong><input type="submit" class="xg" name="xgdiy" value="修改"></strong>
 											<strong><input type="button" onclick="yc_box(this.parentNode.parentNode);" class="qx" value="取消"></strong>
 										</b>
 									</div>
