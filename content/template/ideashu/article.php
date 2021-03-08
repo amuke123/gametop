@@ -15,7 +15,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 						<ul>
 							<li id="goods"><i class="icono-heart"></i><?php echo $art_goodnum;?> 赞</li>
 							<li id="sc"><i class="icono-bookmark"></i><?php echo $art_collects;?> 收藏</li>
-							<li><i class="icono-fied"></i><a href="<?php echo Url::sort($art_sortid);?>" target="_blank" ><?php echo $art_sortName;?></a></li>
+							<li><i class="icono-fied"></i><a href="<?php echo Url::sort($art_sortid);?>"><?php echo $art_sortName;?></a></li>
 							<li><i class="icono-write"></i><?php echo $art_saynum;?> 评论</li>
 							<li><i class="icono-eye"></i><?php echo $art_eyes;?> 阅读</li>
 						</ul>
@@ -36,7 +36,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 					</div>
 					<div class="d_contc"><p>---</p></div>
 					<div class="d_contc">转载请注明本文标题和链接：《 <a href="<?php echo Url::log($aid);?>"><?php echo $art_title;?></a> 》</div>
-					<div class="d_tag"><b>TAG：</b>	<?php echo getTag($art_tags);?><div class="clear"></div></div>
+					<div class="d_tag"><b>TAG：</b>	<?php echo getTag($art_tags,1);?><div class="clear"></div></div>
 					<div class="d_good">
 						<?php $code=Checking::getAjCode(12);?>
 						<input type="hidden" name='ajcode' id='ajcode' value="<?php echo $code;?>" />

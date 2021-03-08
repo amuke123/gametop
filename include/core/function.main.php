@@ -209,11 +209,13 @@ function getRandImg(){//获取笔记图片
 }
 
 
-function getTag($tagids=''){//获取笔记标签
+function getTag($tagids='',$tar=0){//获取笔记标签
 	$ids=tag_Model::getArtTagList($tagids);
 	$str='';
 	foreach($ids as $val){
-		$str.='<a target="_blank" href="'.Url::tag($val['tagurl']).'">'.$val['tagname'].'</a>';
+		$str.='<a ';
+		if(!$tar){$str.=' target="_blank" ';}
+		$str.=' href="'.Url::tag($val['tagurl']).'">'.$val['tagname'].'</a>';
 	}
 	return $str;
 }
