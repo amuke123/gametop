@@ -87,7 +87,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 									<input type="hidden" name='ajcode' value="<?php echo $code;?>" />
 									<p><span><?php echo IDEA_URL .'author/';?><i id="box_show" class="box_show"><?php echo $userinfo['diyurl'];?></i></span>
 									<b id="box_hidden" class="box_hidden">
-										<input type="text" class="ptt" name="diyurl" value="<?php echo $userinfo['diyurl'];?>"><br />
+										<input type="text" class="ptt" name="diyurl" value="<?php echo $userinfo['diyurl'];?>"> <i style="font-size:13px;"> * 个性域名是以字母开头的并且只包含字母和数字的字符串组合，如：idea123</i><br />
 										<strong><input type="submit" class="xg" name="xgdiy" value="修改"></strong>
 										<strong><input type="button" onclick="javascript:box_line(0);" class="qx" value="取消"></strong>
 									</b>
