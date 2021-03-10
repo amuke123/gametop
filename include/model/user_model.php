@@ -115,6 +115,19 @@ class user_Model{
 		return $key;
 	}
 	
+    static function isAliasExist($alias, $uid = '') {//判断个性域名是否存在 $uid 兼容更新作者资料时用户名未变更情况
+		$db=Conn::getConnect();
+        if(empty($alias)){return FALSE;}
+		//if($alias=="set"||$alias=="company"||$alias=="add"){return false;}
+		if(!ctype_alpha(substr($alias,0,1))){return false;}
+		if(!ctype_alnum($alias)){return false;}
+		$subSql = $uid!='' ? ' and `id`!='.$uid : '';
+		$sql="SELECT COUNT(*) AS `total` FROM `". DB_PRE ."user` WHERE `diyurl`='".$alias."' ".$subSql;
+		//echo $sql;
+		$data = $db->getOnce($sql);
+		if($data['total']>0){return false;}else{return true;}
+    }
+	
 	static function addLine($adddata,$dbtb,$sid=''){//创建
 		$db=Conn::getConnect();
 		$keystr='';

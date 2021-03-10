@@ -47,7 +47,7 @@ class setting_Control{
 				$datauser['description']=isset($_POST['description'])?$_POST['description']:'';
 				if(user_Model::addLine($datauser,'user',$uid)){echo "<script>location.href='".Url::setting($uid)."';</script>";exit;}
 			}else{
-				echo "<script>alert('非法操作4');window.history.back();</script>";exit;
+				echo "<script>alert('非法操作');window.history.back();</script>";exit;
 			}
 		}
 		if(isset($_POST['xgpw'])){
@@ -70,7 +70,7 @@ class setting_Control{
 				}
 				if(user_Model::addLine($datauser,'user',$uid)){echo "<script>location.href='".Url::setting($uid)."account';</script>";exit;}
 			}else{
-				echo "<script>alert('非法操作3');window.history.back();</script>";exit;
+				echo "<script>alert('非法操作');window.history.back();</script>";exit;
 			}
 		}
 		
@@ -102,7 +102,7 @@ class setting_Control{
 				}
 				if(user_Model::addLine($datauser,'user',$uid)){echo "<script>location.href='".Url::setting($uid)."account';</script>";exit;}
 			}else{
-				echo "<script>alert('非法操作2');window.history.back();</script>";exit;
+				echo "<script>alert('非法操作');window.history.back();</script>";exit;
 			}
 		}
 		
@@ -111,6 +111,9 @@ class setting_Control{
 			$ajcode=isset($_POST['ajcode'])?$_POST['ajcode']:'';
 			if($ajcode==$_SESSION['ajcode']){
 				if(isset($_POST['diyurl'])){
+					if(User_Model::isAliasExist($_POST['diyurl'],UID)){}else{
+						echo "<script>alert('个性域名已存在或不合法！');window.history.back();</script>";exit();
+					}
 					$datauser['diyurl']=urlencode($_POST['diyurl']);
 				}
 				if(isset($_POST['colorstyle'])){
@@ -118,7 +121,7 @@ class setting_Control{
 				}
 				if(isset($_POST['bgtype'])){
 					$datauser['bgtype']=empty($_POST['bgtype'])?'':$_POST['bgtype'];
-					if($datauser['bgtype']=='default'||$datauser['bgtype']==''){$datauser['bgpic']='';}
+					if($datauser['bgtype']=='def'||$datauser['bgtype']==''){$datauser['bgpic']='';}
 					if($datauser['bgtype']=='color'){$datauser['bgpic']=isset($_POST['bgcolor'])?$_POST['bgcolor']:'';}
 					if($datauser['bgtype']=='image'){
 						$upfile=new Upfile();
@@ -128,7 +131,7 @@ class setting_Control{
 				if(user_Model::addLine($datauser,'user',$uid)){echo "<script>location.href='".Url::setting($uid)."preference';</script>";exit;}
 			}else{
 				//echo $ajcode."-".$_SESSION['ajcode'];
-				echo "<script>alert('非法操作1');window.history.back();</script>";exit;
+				echo "<script>alert('非法操作');window.history.back();</script>";exit;
 			}
 		}
 		

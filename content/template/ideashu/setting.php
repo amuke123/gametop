@@ -118,9 +118,9 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 								<form action="" method="post" enctype="multipart/form-data">
 									<input type="hidden" name='ajcode' value="<?php echo $code;?>" />
 									<div class="bgcl">
-										<p><span><input name="bgtype" type="radio" value="default" onchange="xs_box(this.parentNode.parentNode.parentNode);"  <?php echo $userinfo['bgtype']==''?'checked':'';?> /></span><span>默认背景</span></p>
-										<p><span><input name="bgtype" type="radio" value="color" onchange="xs_box(this.parentNode.parentNode.parentNode);" <?php echo $userinfo['bgtype']=='color'?'checked':'';?> /></span><span>纯色</span><span><input type="color" class="cl"  onchange="xs_box(this.parentNode.parentNode.parentNode);" name="bgcolor" value="<?php echo $userinfo['bgpic'];?>"></span></p>
-										<p><span><input name="bgtype" type="radio" value="image" onchange="xs_box(this.parentNode.parentNode.parentNode);" <?php echo $userinfo['bgtype']=='image'?'checked':'';?> /></span><span>背景图</span><span><img src="<?php echo $userinfo['bgpic'];?>" /><input onchange="xs_box(this.parentNode.parentNode.parentNode);" type="file" name="bgpic"></span></p>
+										<p><span><input name="bgtype" type="radio" value="def" onchange="xs_box(this.parentNode.parentNode.parentNode);"  <?php echo $userinfo['bgtype']=='def'||$userinfo['bgtype']==''?'checked':'';?> /></span><span>默认背景</span></p>
+										<p><span><input name="bgtype" type="radio" value="color" onchange="xs_box(this.parentNode.parentNode.parentNode);" <?php echo $userinfo['bgtype']=='color'?'checked':'';?> /></span><span>纯色</span><span><input type="color" class="cl"  onchange="xs_box(this.parentNode.parentNode.parentNode);" name="bgcolor" value="<?php echo strstr($userinfo['bgpic'],'#')?$userinfo['bgpic']:'';?>"></span></p>
+										<p><span><input name="bgtype" type="radio" value="image" onchange="xs_box(this.parentNode.parentNode.parentNode);" <?php echo $userinfo['bgtype']=='image'?'checked':'';?> /></span><span>背景图</span><span><img src="<?php echo !strstr($userinfo['bgpic'],'#')?$userinfo['bgpic']:'';?>" /><input onchange="xs_box(this.parentNode.parentNode.parentNode);" type="file" name="bgpic"></span></p>
 										<b class="box_hidden">
 											<strong><input type="submit" class="xg" name="xgdiy" value="修改"></strong>
 											<strong><input type="button" onclick="yc_box(this.parentNode.parentNode);" class="qx" value="取消"></strong>
