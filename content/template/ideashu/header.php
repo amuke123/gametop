@@ -29,7 +29,7 @@ require_once View::getView('function');
 <?php doAction('index_head');?>
 </head>
 <body>
-<div class="c1">
+<div class="c1" id="h_top">
 	<div class="content">
 		<header>
 			<div class="center">

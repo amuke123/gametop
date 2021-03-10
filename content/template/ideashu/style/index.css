@@ -406,6 +406,9 @@ header{width:100%;border-bottom:1px solid #eee;}
 .box_hidden strong input.xg{color:#fff;background-color:#428bca;border-color:#357ebd;}
 .box_hidden strong input.qx{color:#333;background-color:#fff;border-color:#ccc;}
 
+.to_top{position:fixed;right:20px;bottom:60px;z-index:999;}
+.to_top a{display:inline-block;width:50px;height:50px;line-height:45px;font-size:32px;background:#333;color:#eee;}
+.to_top a:hover{background:#000;color:#fff;}
 
 
 .m_list{width:100%;display:table;margin-top:15px;}

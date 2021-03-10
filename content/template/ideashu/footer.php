@@ -2,6 +2,7 @@
 if(!defined('IDEA_ROOT')){exit('error!');}
 ?>
 <div class="hint" id="hint"></div>
+<div class="to_top"><a title="TOP" href="#h_top">⇪</a></div>
 <div class="c1">
 	<div class="content">
 		<footer>

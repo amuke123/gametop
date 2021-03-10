@@ -14,7 +14,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 					<li>
 						<div class="li_img">
 							<a href="<?php echo Url::log($value['id']);?>"><img src="<?php echo $value['pic']!=''?str_replace('../',IDEA_URL,$value['pic']):getImg($value['id']);?>" /></a>
-							<b><a href="<?php echo Url::sort($value['s_id']);?>" class="cl1"><?php echo $sortName;?></a></b>
+							<b><a href="<?php echo Url::sort($value['s_id']);?>" class="cl<?php echo $value['s_id'];?>"><?php echo $sortName;?></a></b>
 						</div>
 						<div class="li_title"><a href="<?php echo Url::log($value['id']);?>"><?php echo $value['title'];?></a></div>
 						<?php $excerpt=$value['excerpt']==''?strip_tags(htmlspecialchars_decode($value['content'])):strip_tags($value['excerpt']);?>
