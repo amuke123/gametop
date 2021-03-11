@@ -31,9 +31,34 @@ function sortbh(el=0){
 	}
 }
 
+function gz_change(e){
+	mytext=e.innerHTML;
+	if(mytext=='已关注'||mytext=='互相关注'){e.innerHTML="取消关注";}
+}
+
+function gz_change2(e){
+	mytitle=e.title;
+	if(mytitle=='已关注'){e.innerHTML="已关注";}
+	if(mytitle=='已互相关注'){e.innerHTML="互相关注";}
+}
+
 function changeC2(num=0){
 	var navlist=document.getElementById('author_nav').getElementsByTagName('a');
 	var contlist=document.getElementById('author_cont').getElementsByClassName('c_cl_li');
+	for(i=0;i<navlist.length;i++){
+		if(num==i){
+			navlist[i].className="active";
+			contlist[i].style.display="block";
+		}else{
+			navlist[i].className="";
+			contlist[i].style.display="none";
+		}
+	}
+}
+
+function changeC22(num=0){
+	var navlist=document.getElementById('author_nav2').getElementsByTagName('a');
+	var contlist=document.getElementById('author_cont2').getElementsByClassName('c_cl_li');
 	for(i=0;i<navlist.length;i++){
 		if(num==i){
 			navlist[i].className="active";

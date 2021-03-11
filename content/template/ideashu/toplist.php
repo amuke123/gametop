@@ -35,7 +35,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 									<div class="clear"></div>
 								</div>
 								<div class="c_li_info">
-									<div class="left"><a href="<?php echo $value['authorurl'];?>">by <?php echo $value['authorname'];?></a></div>
+									<div class="left"><span><?php echo date('Y-d-m',$value['date']);?></span><a href="<?php echo $value['authorurl'];?>">by <?php echo $value['authorname'];?></a></div>
 									<div class="right">
 										<a href="<?php echo $value['sorturl'];?>"><?php echo $value['sortname'];?></a>
 										<a href="<?php echo $value['arturl'];?>#comments"><?php echo $value['saynum'];?> 评论</a>
@@ -127,7 +127,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 									<div class="clear"></div>
 								</div>
 								<div class="c_li_info">
-									<div class="left"><a href="<?php echo $value['authorurl'];?>">by <?php echo $value['authorname'];?></a></div>
+									<div class="left"><span><?php echo date('Y-d-m',$value['date']);?></span><a href="<?php echo $value['authorurl'];?>">by <?php echo $value['authorname'];?></a></div>
 									<div class="right">
 										<a href="<?php echo $value['sorturl'];?>"><?php echo $value['sortname'];?></a>
 										<a href="<?php echo $value['arturl'];?>#comments"><?php echo $value['saynum'];?> 评论</a>
