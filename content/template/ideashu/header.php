@@ -60,7 +60,7 @@ require_once View::getView('function');
 					<div class="h_login right">
 						<ul>
 							<li class="h_login_zx"><b><img src="<?php echo $avatar;?>" title="<?php echo $name;?>" /></b>
-							<p><a href="<?php echo Url::setting(UID);?>">设置</a><a href="<?php echo Url::person(UID);?>">管理中心</a><a href="<?php echo Url::work(UID);?>" target="_blank">创作平台</a><?php if(ROLE==ROLE_ADMIN){?><a  target="_blank" href="<?php echo IDEA_URL .ADMIN_TYPE; ?>">后台管理</a><?php }?><a href="<?php echo Url::getActionUrl('goout');?>">退出</a><p>
+							<p><a href="<?php echo Url::setting(UID);?>">设置</a><a href="<?php echo Url::person(UID);?>">个人中心</a><a href="<?php echo Url::work(UID);?>" target="_blank">创作平台</a><?php if(ROLE==ROLE_ADMIN){?><a  target="_blank" href="<?php echo IDEA_URL .ADMIN_TYPE; ?>">后台管理</a><?php }?><a href="<?php echo Url::getActionUrl('goout');?>">退出</a><p>
 							</li>
 						</ul>
 					</div>

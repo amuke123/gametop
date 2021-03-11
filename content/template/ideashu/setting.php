@@ -22,8 +22,8 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 							<li id='nav_0'><a href="<?php echo Url::setting(UID);?>"><i class="icon aicon-user"></i>个人设置</a></li>
 							<li id='nav_1'><a href="<?php echo Url::setting(UID);?>account"><i class="icon aicon-pass"></i>安全设置</a></li>
 							<li id='nav_2'><a href="<?php echo Url::setting(UID);?>preference"><i class="icon aicon-tian"></i>个性设置</a></li>
-							<li id='nav_3'><a href="<?php echo Url::setting(UID);?>wishset"><i class="icon aicon-page"></i>我的清单</a></li>
-							<li id='nav_4'><a href="<?php echo Url::setting(UID);?>collect"><i class="icon aicon-bookmark"></i>关注与收藏</a></li>
+							<!--li id='nav_3'><a href="<?php //echo Url::setting(UID);?>wishset"><i class="icon aicon-page"></i>我的清单</a></li>
+							<li id='nav_4'><a href="<?php //echo Url::setting(UID);?>collect"><i class="icon aicon-bookmark"></i>关注与粉丝</a></li-->
 						</ul>
 						<div class="line2"></div>
 					</div>
@@ -130,7 +130,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 							</li>
 							<div class="line2"></div>
 						</div>
-						<div class="cent_li">
+						<!--div class="cent_li">
 							<li>
 								<p><b>清单设置</b></p>
 								<p><span></span></p>
@@ -139,19 +139,15 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 						</div>
 						<div class="cent_li">
 							<li>
-								<p><b>关注的清单</b></p>
+								<p><b>我的关注</b></p>
 								<p><span></span></p>
 							</li>
 							<li>
-								<p><b>关注的设计师</b></p>
-								<p><span></span></p>
-							</li>
-							<li>
-								<p><b>收藏的笔记</b></p>
+								<p><b>我的粉丝</b></p>
 								<p><span></span></p>
 							</li>
 							<div class="line2"></div>
-						</div>
+						</div-->
 					</div>
 				</div>
 				<div class="clear"></div>
