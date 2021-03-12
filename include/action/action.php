@@ -49,7 +49,8 @@ if(isset($_POST['type'])){
 				}
 				break;
 			case 'sc':
-				$uid=$_POST['uid'];
+				//$uid=$_POST['uid'];
+				$uid=UID;
 				if($uid!=""){
 					$sql = "SELECT * FROM `".DB_PRE ."user` WHERE `id`=".$uid;
 					$sarr = $db->getOnce($sql);
@@ -68,7 +69,7 @@ if(isset($_POST['type'])){
 						$data['text']="收藏成功";
 					}
 				}else{
-					$data['text']="请先登录";
+					$data['text']="请登录后收藏";
 				}
 				break;
 			case 'addfocus':

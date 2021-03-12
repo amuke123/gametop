@@ -6,8 +6,8 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 		<div class="list">
 			<div class="center">
 				<div class="list_top">
-					<p><i></i><b><?php echo $tag?></b></p>
-					<p><span>以下是关于标签 “ <?php echo $tag?> ” 相关联的笔记列表 ！</span></p>
+					<p><i></i><b><?php echo $tag;?></b></p>
+					<p><span>以下是关于标签 “ <?php echo $tag;?> ” 相关联的笔记列表 ！</span></p>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -17,7 +17,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 				<div class="c_ad"><p class="left"></p><p class="right"></p><div class="clear"></div></div>
 				<div class="c_cont_left left">
 					<div class="c_cl_top">
-						<p>笔记</p>
+						<p><b><?php echo $tag;?></b>-笔记</p>
 					</div>
 					<div class="c_cl_li">
 						<?php foreach($arts as $value){?>

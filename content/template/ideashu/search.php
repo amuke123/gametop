@@ -23,7 +23,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 				</div>
 				<div class="c_cont_left left">
 					<div class="c_cl_top">
-						<p>笔记</p>
+						<p><b><?php echo $keyword;?></b>-笔记</p>
 					</div>
 					<div class="c_cl_li">
 						<?php foreach($arts as $value){?>

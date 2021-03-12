@@ -33,7 +33,7 @@
 				<p><i class="icon icon-password"></i><input type="password" name="password" class="form_full" required autocomplete="on" placeholder="请输入密码" /></p>
 				<p>
 				<?php if(Control::get('login_code')){?>
-				<i class="icon icon-code"></i><input type="text" name="code" class="form_half" placeholder="验证码" /><span><img src="<?php echo IDEA_URL.'include/core/code.php?ac='.rand(10000,99999);?>" onclick="this.src=this.src+Math.floor(Math.random()*10);" /></span>
+				<i class="icon icon-code"></i><input type="text" name="code" class="form_half" placeholder="验证码" /><span><img title="点击图片更换验证码" style="cursor:pointer;" src="<?php echo IDEA_URL.'include/core/code.php?ac='.rand(10000,99999);?>" onclick="this.src=this.src+Math.floor(Math.random()*10);" /></span>
 				<?php }?>&nbsp;
 				</p>
 				<p><input type="checkbox" name="save" value='1' class="form_check"/><label>记住登录</label></p>
