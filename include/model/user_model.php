@@ -88,6 +88,28 @@ class user_Model{
 		$mysql->query($sqlst);
 	}
 	
+	public static function getCollect($pagenum,$startnum,$ids=''){//获取收藏列表
+		$lists="";
+		if($startnum<count($ids)){
+			$lists=array_slice($ids,$startnum,$pagenum);
+			$data=array();
+			foreach($lists as $val){
+				$data[]=art_Model::getOnceArt($val);
+			}
+		}
+		return $data;
+	}
+	
+	public static function getStrToId($liststr){//获取收藏字符串转id列表
+		$lists=explode(",",$liststr);
+		$data=array();
+		foreach($lists as $value){
+			$line=explode("|",$value);
+			if($line[0]=="a"){$data[]=$line[1];}
+		}
+		$data=array_reverse($data);
+		return $data;
+	}
 
 	public static function getGz($author){//获取关注列表
 		$db = Conn::getConnect();
@@ -95,6 +117,7 @@ class user_Model{
 		$focus1=$db->getlist($sql);
 		return $focus1;
 	}
+	
 
 	public static function getFs($author){//获取粉丝列表
 		$db = Conn::getConnect();

@@ -3,16 +3,16 @@
 		<div class="author_head">
 			<div class="center">
 				<div class="author_top">
-					<div class="author_list">
-						<strong><a href="?"><img src="<?php echo TEMPLATE_URL;?>images/5.jpg" /></a></strong>
-						<p><a href="?">小Q创意</a> <a href="../?edit" target="_blank"><span>✎</span></a></p>
-						<p><span>管理员</span><span>2019-09-06 入驻</span></p>
-						<p>生活中处处都有美，用心去发现生活中的美，那些人，那些事，那些景，尽情探险，尽情享受...</p>
+					<div class="author_list">	
+						<strong><a title="查看主页" href="<?php echo Url::author($uid);?>"><img src="<?php echo user_Model::getUserPhoto($userinfo['id']);?>" /></a></strong>
+						<p><a title="查看主页" href="<?php echo Url::author($uid);?>"><?php echo $userinfo['name'];?></a> <a title="修改资料" href="<?php echo Url::setting(UID);?>" target="_blank"><span>✎</span></a></p>
+						<p><span><?php echo $userinfo['role']==ROLE_ADMIN?'管理员':'设计师';?></span><span><?php echo date('Y-m-d',$userinfo['date']);?> 入驻</span></p>
+						<p><?php echo $userinfo['description']=="" ? "这家伙很懒，什么都没留下!":$userinfo['description'];?></p>
 						<div class="line2"></div>
 						<div class="clear"></div>
 					</div>
 					<div class="author_nav" id="author_nav">
-						<a href="javascript:changeC4(0);" class="action">动态</a><a href="javascript:changeC4(1);">笔记</a><a href="javascript:changeC4(2);">收藏</a><a href="javascript:changeC4(3);">清单</a><a href="javascript:changeC4(4);">关注</a>
+						<a href="<?php echo Url::person(UID);?>" class="action">动态</a><a href="<?php echo Url::person(UID);?>notes">笔记</a><a href="<?php echo Url::person(UID);?>collect">收藏</a><a href="<?php echo Url::person(UID);?>list">清单</a><a href="<?php echo Url::person(UID);?>follow">关注</a>
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -23,6 +23,7 @@
 				<div class="c_ad"><p class="left"></p><p class="right"></p><div class="clear"></div></div>
 				<div class="author_cont c_cont_left left" id="author_cont">
 					<div class="c4_list">
+						<?php if($keyson==0){?>
 						<div class="c_cl_top">
 							<p>我的动态</p>
 						</div>
@@ -114,123 +115,94 @@
 						<div class="list_page">
 							<p><?php //echo $pagestr;?></p>
 						</div>
+						<?php }?>
 					</div>
 					<div class="c4_list">
+						<?php if($keyson==1){?>
 						<div class="c_cl_top">
 							<p>我的笔记</p>
 						</div>
 						<div class="c_cl_li">
+							<?php if(empty($arts)){?>
+							<ul class="list_li">
+								<p class="comment_header"><b>您没有撰写任何笔记！</b></p>
+							</ul>
+							<?php }else{foreach($arts as $value){?>
 							<li>
-								<h2><a href="#">这是色彩理论概述标题</a></h2>
+								<h2><a href="<?php echo Url::log($value['id']);?>"><?php echo $value['title'];?></a></h2>
 								<div class="c_li_cont">
 									<div class="c_li_img">
-										<p><a href="#"><img src="<?php echo TEMPLATE_URL;?>images/4.jpg" ></a></p>
+										<p><a href="<?php echo Url::log($value['id']);?>"><img src="<?php echo $value['pic']!=''?str_replace('../',IDEA_URL,$value['pic']):getImg($value['id']);?>" ></a></p>
 									</div>
 									<div class="c_li_des">
-										<p>这是摄影圈装逼指南 Instagram 贡献的又一圣餐， 来自用户 Trevino 的创意， 简单的说，如果你有很多很多的这是摄影圈装逼指南 Instagram 贡献的又一圣餐， 来自用户 Trevino 的创意， 简单的说，如果你有很多很多的... <a href="#">阅读全文</a></p>
+									<?php $excerpt=$value['excerpt']==''?strip_tags(htmlspecialchars_decode($value['content'])):strip_tags($value['excerpt']);?>
+										<p><?php echo mb_substr(trim($excerpt),0,180);?>...<a href="<?php echo Url::log($value['id']);?>">阅读全文</a></p>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="c_li_info">
-									<div class="left"><a href="#">by ddd</a></div>
+									<div class="left"><a href="<?php echo Url::author($value['author']);?>">by <?php echo user_Model::getUserName($value['author']);?></a></div>
 									<div class="right">
-										<a href="#">分类</a>
-										<a href="#">1 评论</a>
-										<a href="#">1 收藏</a>
-										<a href="#">1 攒</a>
-										<a href="#">11 浏览</a>
+										<a href="<?php echo Url::sort($value['s_id']);?>"><?php echo sort_Model::getSortName($value['s_id']);?></a>
+										<a href="<?php echo Url::log($value['id']);?>#comments"><?php echo $value['saynum'];?> 评论</a>
+										<a href="<?php echo Url::log($value['id']);?>"><?php echo art_Model::getCollects($value['id']);?> 收藏</a>
+										<a href="<?php echo Url::log($value['id']);?>"><?php echo $value['goodnum'];?> 攒</a>
+										<a href="<?php echo Url::log($value['id']);?>"><?php echo $value['eyes'];?> 浏览</a>
 									</div>
 									<div class="clear"></div>
 								</div>
 							</li>
-							<li>
-								<h2><a href="#">这是色彩理论概述标题</a></h2>
-								<div class="c_li_cont">
-									<div class="c_li_img">
-										<p><a href="#"><img src="<?php echo TEMPLATE_URL;?>images/4.jpg" ></a></p>
-									</div>
-									<div class="c_li_des">
-										<p>这是摄影圈装逼指南 Instagram 贡献的又一圣餐， 来自用户 Trevino 的创意， 简单的说，如果你有很多很多的这是摄影圈装逼指南 Instagram 贡献的又一圣餐， 来自用户 Trevino 的创意， 简单的说，如果你有很多很多的... <a href="#">阅读全文</a></p>
-									</div>
-									<div class="clear"></div>
-								</div>
-								<div class="c_li_info">
-									<div class="left"><a href="#">by ddd</a></div>
-									<div class="right">
-										<a href="#">分类</a>
-										<a href="#">1 评论</a>
-										<a href="#">1 收藏</a>
-										<a href="#">1 攒</a>
-										<a href="#">11 浏览</a>
-									</div>
-									<div class="clear"></div>
-								</div>
-							</li>
+							<?php }}?>
 						</div>
 						<div class="list_page">
-							<p><?php //echo $pagestr;?></p>
+							<p><?php echo $pagestr;?></p>
 						</div>
+						<?php }?>
 					</div>
 					<div class="c4_list">
+						<?php if($keyson==2){?>
 						<div class="c_cl_top">
 							<p>我的收藏</p>
 						</div>
-						<ul class="list_li">
-							<p class="comment_header"><b>您没有收藏任何笔记！</b></p>
-						</ul>
 						<div class="c_cl_li">
+							<?php if(empty($collects)){?>
+							<ul class="list_li">
+								<p class="comment_header"><b>您没有收藏任何笔记！</b></p>
+							</ul>
+							<?php }else{foreach($collects as $value){?>
 							<li>
-								<h2><a href="#">这是色彩理论概述标题</a></h2>
+								<h2><a href="<?php echo Url::log($value['id']);?>"><?php echo $value['title'];?></a></h2>
 								<div class="c_li_cont">
 									<div class="c_li_img">
-										<p><a href="#"><img src="<?php echo TEMPLATE_URL;?>images/4.jpg" ></a></p>
+										<p><a href="<?php echo Url::log($value['id']);?>"><img src="<?php echo $value['pic']!=''?str_replace('../',IDEA_URL,$value['pic']):getImg($value['id']);?>" ></a></p>
 									</div>
 									<div class="c_li_des">
-										<p>这是摄影圈装逼指南 Instagram 贡献的又一圣餐， 来自用户 Trevino 的创意， 简单的说，如果你有很多很多的这是摄影圈装逼指南 Instagram 贡献的又一圣餐， 来自用户 Trevino 的创意， 简单的说，如果你有很多很多的... <a href="#">阅读全文</a></p>
+									<?php $excerpt=$value['excerpt']==''?strip_tags(htmlspecialchars_decode($value['content'])):strip_tags($value['excerpt']);?>
+										<p><?php echo mb_substr(trim($excerpt),0,180);?>...<a href="<?php echo Url::log($value['id']);?>">阅读全文</a></p>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="c_li_info">
-									<div class="left"><a href="#">by ddd</a></div>
+									<div class="left"><a href="<?php echo Url::author($value['author']);?>">by <?php echo user_Model::getUserName($value['author']);?></a></div>
 									<div class="right">
-										<a href="#">分类</a>
-										<a href="#">1 评论</a>
-										<a href="#">1 收藏</a>
-										<a href="#">1 攒</a>
-										<a href="#">11 浏览</a>
+										<a href="<?php echo Url::sort($value['s_id']);?>"><?php echo sort_Model::getSortName($value['s_id']);?></a>
+										<a href="<?php echo Url::log($value['id']);?>#comments"><?php echo $value['saynum'];?> 评论</a>
+										<a href="<?php echo Url::log($value['id']);?>"><?php echo art_Model::getCollects($value['id']);?> 收藏</a>
+										<a href="<?php echo Url::log($value['id']);?>"><?php echo $value['goodnum'];?> 攒</a>
+										<a href="<?php echo Url::log($value['id']);?>"><?php echo $value['eyes'];?> 浏览</a>
 									</div>
 									<div class="clear"></div>
 								</div>
 							</li>
-							<li>
-								<h2><a href="#">这是色彩理论概述标题</a></h2>
-								<div class="c_li_cont">
-									<div class="c_li_img">
-										<p><a href="#"><img src="<?php echo TEMPLATE_URL;?>images/4.jpg" ></a></p>
-									</div>
-									<div class="c_li_des">
-										<p>这是摄影圈装逼指南 Instagram 贡献的又一圣餐， 来自用户 Trevino 的创意， 简单的说，如果你有很多很多的这是摄影圈装逼指南 Instagram 贡献的又一圣餐， 来自用户 Trevino 的创意， 简单的说，如果你有很多很多的... <a href="#">阅读全文</a></p>
-									</div>
-									<div class="clear"></div>
-								</div>
-								<div class="c_li_info">
-									<div class="left"><a href="#">by ddd</a></div>
-									<div class="right">
-										<a href="#">分类</a>
-										<a href="#">1 评论</a>
-										<a href="#">1 收藏</a>
-										<a href="#">1 攒</a>
-										<a href="#">11 浏览</a>
-									</div>
-									<div class="clear"></div>
-								</div>
-							</li>
+							<?php }}?>
 						</div>
 						<div class="list_page">
-							<p><?php //echo $pagestr;?></p>
+							<p><?php echo $pagestr;?></p>
 						</div>
+						<?php }?>
 					</div>
 					<div class="c_c5_list c4_list">
+						<?php if($keyson==3){?>
 						<div class="c_cl_top">
 							<p>我的清单</p>
 						</div>
@@ -248,9 +220,11 @@
 						<div class="list_page">
 							<p><?php //echo $pagestr;?></p>
 						</div>
+						<?php }?>
 						<div class="clear"></div>
 					</div>
 					<div class="c_c5_list c4_list">
+						<?php if($keyson==4){?>
 						<div class="c_cl_top" id="author_nav2">
 							<a href="javascript:changeC22(0);" class="active">我的关注</a><a href="javascript:changeC22(1);">我的粉丝</a>
 						</div>
@@ -334,6 +308,7 @@
 								</div>
 							</div>
 						</div>
+						<?php }?>
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -357,7 +332,7 @@
 		</article>
 	</div>
 </div>
-<script>changeC4();</script>
+<script>changeC4("<?php echo $keyson;?>");</script>
 <?php
 include View::getView('footer');
 ?>

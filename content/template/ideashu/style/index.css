@@ -310,8 +310,8 @@ header{width:100%;border-bottom:1px solid #eee;}
 .author_list strong img{height:100%;}
 .author_list p{line-height:40px;}
 .author_list p a{font-size:17px;font-weight:bold;}
-.author_list p a span{display:inline-block;margin:10px 10px;line-height:20px;padding:0px 6px 0px 3px;color:#999;transform:rotateY(180deg);border-bottom:1px solid #999;border-radius:3px;}
-.author_list p a:hover span{color:#608040;border-bottom:1px solid #608040;}
+.author_list p a span{display:inline-block;margin:10px 10px;line-height:20px;padding:0px 6px 0px 3px;color:#999;transform:rotateY(180deg);/**border-bottom:1px solid #999;border-radius:3px;**/}
+.author_list p a:hover span{color:#608040;}
 .author_list p span{color:#a0a0a0;padding:5px;}
 .author_p {width:auto;display:inline-block;margin:10px auto;}
 .author_p p.c_c4_p{margin:40px auto;}

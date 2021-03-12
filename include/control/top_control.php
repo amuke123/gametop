@@ -13,7 +13,8 @@ class top_Control{
 		$pagenum = Control::get('art_num');
 		$system_cache=Control::getAll();
 		extract($system_cache);
-		switch($datas[2]){
+		$ccdate=isset($datas[2])?$datas[2]:'';
+		switch($ccdate){
 			case 'fabulous':
 				$topname='高赞榜';
 				$arts=$cache->readCache('goods');

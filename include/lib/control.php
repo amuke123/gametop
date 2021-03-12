@@ -105,7 +105,7 @@ class Control{
 			array(//个人中心控制器
 				'model'=>'person_Control',
 				'method'=>'display',
-				'reg_1'=>'{^.*/(person)/?([^\./\?=]+)?/?([\?&].*)?$}',
+				'reg_1'=>'{^.*/(person)/?([^\./\?=]+)?/?((page)/(\d+))?([\?&].*)?$}',
 			),
 			array(//创作中心控制器
 				'model'=>'work_Control',
