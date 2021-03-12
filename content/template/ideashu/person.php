@@ -231,7 +231,7 @@
 						<?php $code=Checking::getAjCode(12);?>
 						<input type="hidden" name='ajcode' id='ajcode' value="<?php echo $code;?>" />
 						<div class="c_cl_top" id="author_nav2">
-							<a href="javascript:changeC22(0);" class="active">我的关注</a><a href="javascript:changeC22(1);">我的粉丝</a>
+							<a href="javascript:changeC22(0);" class="active">我关注的</a><a href="javascript:changeC22(1);">我的粉丝</a>
 						</div>
 						<div id="author_cont2">
 							<div class="c_cl_li">

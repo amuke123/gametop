@@ -95,9 +95,9 @@ class user_Model{
 	
 	public static function getCollect($pagenum,$startnum,$ids=''){//获取收藏列表
 		$lists="";
+		$data=array();
 		if($startnum<count($ids)){
 			$lists=array_slice($ids,$startnum,$pagenum);
-			$data=array();
 			foreach($lists as $val){
 				$data[]=art_Model::getOnceArt($val);
 			}
