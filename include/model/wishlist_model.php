@@ -16,6 +16,22 @@ class wishlist_Model{
 		return $reset;
 	}
 	
+	static function getWhihlists($pagenum,$startnum,$rolestr=''){
+		$db=Conn::getConnect();
+		$sql1="SELECT * FROM `". DB_PRE ."wishlist` WHERE `show`='1' ";
+		$sql1.=$rolestr;
+		$sql1.=" ORDER BY `follownum` DESC,`likenum` DESC limit ".$startnum.",".$pagenum;
+		$reset=$db->getlist($sql1);
+		return $reset;
+	}
+	
+	static function getWhihNum($rolestr=''){
+		$db=Conn::getConnect();
+		$sql1="SELECT COUNT(*) AS total FROM `". DB_PRE ."wishlist` WHERE `show`='1' ".$rolestr;
+		$reset=$db->getOnce($sql1);
+		return $reset;
+	}
+	
 	static function getWhihlist($num=3,$noid=''){
 		$db=Conn::getConnect();
 		$sql1="SELECT * FROM `". DB_PRE ."wishlist` WHERE `show`='1' ";

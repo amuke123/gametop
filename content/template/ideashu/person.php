@@ -207,105 +207,90 @@
 							<p>我的清单</p>
 						</div>
 						<div class="qingdan">
-							<ul>
-								<li><a title="清单1" href="#"><b><img src="<?php echo TEMPLATE_URL;?>images/3.jpg"></b><span>清单1</span></a></li>
-								<li><a title="清单1" href="#"><b><img src="<?php echo TEMPLATE_URL;?>images/3.jpg"></b><span>清单1</span></a></li>
-								<li><a title="清单1" href="#"><b><img src="<?php echo TEMPLATE_URL;?>images/3.jpg"></b><span>清单1</span></a></li>
-								<li><a title="清单1" href="#"><b><img src="<?php echo TEMPLATE_URL;?>images/3.jpg"></b><span>清单1</span></a></li>
-								<li><a title="清单1" href="#"><b><img src="<?php echo TEMPLATE_URL;?>images/3.jpg"></b><span>清单1</span></a></li>
-								<li><a title="清单1" href="#"><b><img src="<?php echo TEMPLATE_URL;?>images/3.jpg"></b><span>清单1</span></a></li>
+							<?php if(empty($wishlists)){?>
+							<ul class="list_li">
+								<p class="comment_header"><b>您没有创建清单！</b></p>
 							</ul>
+							<?php }else{?>
+							<ul>
+								<?php foreach($wishlists as $value){?>
+								<li><a title="<?php echo $value['text'];?>" href="<?php echo Url::wishlist($value['id']);?>"><b><img src="<?php echo $value['pic']==''?getRandImg():str_replace('../',IDEA_URL,$value['pic']);?>"></b><span><?php echo $value['name'];?></span></a></li>
+								<?php }?>
+							</ul>
+							<?php }?>
 							<div class="clear"></div>
 						</div>
 						<div class="list_page">
-							<p><?php //echo $pagestr;?></p>
+							<p><?php echo $pagestr;?></p>
 						</div>
 						<?php }?>
 						<div class="clear"></div>
 					</div>
 					<div class="c_c5_list c4_list">
 						<?php if($keyson==4){?>
+						<?php $code=Checking::getAjCode(12);?>
+						<input type="hidden" name='ajcode' id='ajcode' value="<?php echo $code;?>" />
 						<div class="c_cl_top" id="author_nav2">
 							<a href="javascript:changeC22(0);" class="active">我的关注</a><a href="javascript:changeC22(1);">我的粉丝</a>
 						</div>
 						<div id="author_cont2">
 							<div class="c_cl_li">
-								<ul>
-									<li>
-										<div class="c_c5_limg left"><a href="https://www.ideashu.com/author/6" target="_blank"><img src="<?php echo TEMPLATE_URL;?>images/3.jpg" /></a></div>
-										<div class="c_c5_ldoc left">
-											<div class="c_c5_ltitle"><a href="https://www.ideashu.com/author/6" target="_blank">小Q</a></div>
-											<div class="c_c5_linfo">这家伙很懒，什么都没留下!</div>
-										</div>
-										<div class="c_c5_gz right"><a href="javascript:outFocus('44','https://www.ideashu.com/include/action/action.php','4aMhwBj3TZ','5');" class="action2" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已互相关注">互相关注</a></div>
-									</li>
-									<li>
-										<div class="c_c5_limg left"><a href="https://www.ideashu.com/author/3" target="_blank"><img src="<?php echo TEMPLATE_URL;?>images/5.jpg" /></a></div>
-										<div class="c_c5_ldoc left">
-											<div class="c_c5_ltitle"><a href="https://www.ideashu.com/author/3" target="_blank">你的名字</a></div>
-											<div class="c_c5_linfo">个人描述而已</div>
-										</div>
-										<div class="c_c5_gz right"><a href="javascript:outFocus('45','https://www.ideashu.com/include/action/action.php','4aMhwBj3TZ','5');" class="action2" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已互相关注">互相关注</a></div>
-									</li>
-									<li>
-										<div class="c_c5_limg left"><a href="https://www.ideashu.com/author/4" target="_blank"><img src="<?php echo TEMPLATE_URL;?>images/4.jpg" /></a></div>
-										<div class="c_c5_ldoc left">
-											<div class="c_c5_ltitle"><a href="https://www.ideashu.com/author/4" target="_blank">伸手碰阳光</a></div>
-											<div class="c_c5_linfo">这家伙很懒，什么都没留下!</div>
-										</div>
-										<div class="c_c5_gz right"><a href="javascript:outFocus('51','https://www.ideashu.com/include/action/action.php','4aMhwBj3TZ','5');"  onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已关注">已关注</a></div>
-									</li>
-									<li>
-										<div class="c_c5_limg left"><a href="https://www.ideashu.com/author/5" target="_blank"><img src="<?php echo TEMPLATE_URL;?>images/5.jpg" /></a></div>
-										<div class="c_c5_ldoc left">
-											<div class="c_c5_ltitle"><a href="https://www.ideashu.com/author/5" target="_blank">清风饮露</a></div>
-											<div class="c_c5_linfo">这家伙很懒，什么都没留下!</div>
-										</div>
-										<div class="c_c5_gz right"><a href="javascript:outFocus('52','https://www.ideashu.com/include/action/action.php','4aMhwBj3TZ','5');"  onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已关注">已关注</a></div>
-									</li>
-									<li>
-										<div class="c_c5_limg left"><a href="https://www.ideashu.com/author/2" target="_blank"><img src="<?php echo TEMPLATE_URL;?>images/1.jpg" /></a></div>
-										<div class="c_c5_ldoc left">
-											<div class="c_c5_ltitle"><a href="https://www.ideashu.com/author/2" target="_blank">束缚の花</a></div>
-											<div class="c_c5_linfo">admin</div>
-										</div>
-										<div class="c_c5_gz right"><a href="javascript:outFocus('53','https://www.ideashu.com/include/action/action.php','4aMhwBj3TZ','5');" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已关注">已关注</a></div>
-									</li>
-									<li>
-										<div class="c_c5_limg left"><a href="https://www.ideashu.com/author/102003" target="_blank"><img src="<?php echo TEMPLATE_URL;?>images/2.jpg" /></a></div>
-										<div class="c_c5_ldoc left">
-											<div class="c_c5_ltitle"><a href="https://www.ideashu.com/author/102003" target="_blank">七色彩虹</a></div>
-											<div class="c_c5_linfo">这家伙很懒，什么都没留下!</div>
-										</div>
-										<div class="c_c5_gz right"><a href="javascript:outFocus('56','https://www.ideashu.com/include/action/action.php','4aMhwBj3TZ','5');" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已关注">已关注</a></div>
-									</li>
+								<?php if(empty($gzlist)){?>
+								<ul class="list_li">
+									<p class="comment_header"><b>没有关注设计师！</b></p>
 								</ul>
-								<div class="list_page">
+								<?php }else{?>
+								<ul>
+									<?php foreach($gzlist as $value){?>
+									<li>
+										<div class="c_c5_limg left"><a href="<?php echo Url::author($value['pro_uid']);?>" target="_blank"><img src="<?php echo user_Model::getUserPhoto($value['pro_uid']);?>" /></a></div>
+										<div class="c_c5_ldoc left">
+											<div class="c_c5_ltitle"><a href="<?php echo Url::author($value['pro_uid']);?>" target="_blank"><?php echo user_Model::getUserName($value['pro_uid']);?></a></div>
+											<div class="c_c5_linfo"><?php $descc=user_Model::getUserDes($value['pro_uid']);echo $descc!=""?$descc:'这家伙很懒，什么都没留下!';?></div>
+										</div>
+										<div class="c_c5_gz right">
+											<?php if(($keyid=user_Model::isGz($fslist,$value['pro_uid']))!=0){?>
+											<a href="javascript:outFocus(<?php echo "'".$keyid."','".IDEA_URL ."'";?>);" class="action2" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已互相关注">互相关注</a>
+											<?php }else{?>
+											<a href="javascript:outFocus(<?php echo "'".$keyid."','".IDEA_URL ."'";?>);" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已关注">已关注</a>
+											<?php }?>
+										</div>
+									</li>
+									<?php }?>
+								</ul>
+								<!--div class="list_page">
 									<p><?php //echo $pagestr;?></p>
-								</div>
+								</div-->
+								<?php }?>
 							</div>
 							<div class="c_cl_li">
-								<ul>
-									<li>
-										<div class="c_c5_limg left"><a href="https://www.ideashu.com/author/6" target="_blank"><img src="<?php echo TEMPLATE_URL;?>images/1.jpg" /></a></div>
-										<div class="c_c5_ldoc left">
-											<div class="c_c5_ltitle"><a href="https://www.ideashu.com/author/6" target="_blank">小Q</a></div>
-											<div class="c_c5_linfo">这家伙很懒，什么都没留下!</div>
-										</div>
-										<div class="c_c5_gz right"><a href="javascript:void();" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" class="action" title="已互相关注">互相关注</a></div>
-									</li>
-									<li>
-										<div class="c_c5_limg left"><a href="https://www.ideashu.com/author/3" target="_blank"><img src="<?php echo TEMPLATE_URL;?>images/2.jpg" /></a></div>
-										<div class="c_c5_ldoc left">
-											<div class="c_c5_ltitle"><a href="https://www.ideashu.com/author/3" target="_blank">你的名字</a></div>
-											<div class="c_c5_linfo">个人描述而已</div>
-										</div>
-										<div class="c_c5_gz right"><a href="javascript:getFocus('1','3','https://www.ideashu.com/include/action/action.php','AxOo60bmne','4');" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="关注">关注</a></div>
-									</li>
+								<?php if(empty($fslist)){?>
+								<ul class="list_li">
+									<p class="comment_header"><b>还没有粉丝奥！努力创作吧！</b></p>
 								</ul>
-								<div class="list_page">
+								<?php }else{?>
+								<ul>
+									<?php foreach($fslist as $value){?>
+									<li>
+										<div class="c_c5_limg left"><a href="<?php echo Url::author($value['pre_uid']);?>" target="_blank"><img src="<?php echo user_Model::getUserPhoto($value['pre_uid']);?>" /></a></div>
+										<div class="c_c5_ldoc left">
+											<div class="c_c5_ltitle"><a href="<?php echo Url::author($value['pre_uid']);?>" target="_blank"><?php echo user_Model::getUserName($value['pre_uid']);?></a></div>
+											<div class="c_c5_linfo"><?php echo user_Model::getUserDes($value['pre_uid']);?></div>
+										</div>
+										<div class="c_c5_gz right">
+											<?php if(($keyid=user_Model::isGz2($gzlist,$value['pre_uid']))!=0){?>
+											<a href="javascript:outFocus(<?php echo "'".$keyid."','".IDEA_URL ."'";?>);" class="action" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="已互相关注">互相关注</a>
+											<?php }else{?>
+											<a href="javascript:getFocus(<?php echo "'".UID."','".$value['pre_uid']."','".IDEA_URL ."'";?>);" onmouseover="gz_change(this);" onmouseout="gz_change2(this);" title="关注">关注</a>
+											<?php }?>
+										</div>
+									</li>
+									<?php }?>
+								</ul>
+								<!--div class="list_page">
 									<p><?php //echo $pagestr;?></p>
-								</div>
+								</div-->
+								<?php }?>
 							</div>
 						</div>
 						<?php }?>

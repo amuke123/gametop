@@ -7,7 +7,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 			<div class="center">
 				<div class="list_top">
 					<p><i></i><b>清单</b></p>
-					<p><span>生活中处处都有美，用心去发现生活中的美，那些人，那些事，那些景，尽情探险，尽情享受</span></p>
+					<p><span>清单会帮助我们记住那些不想忘记的、重要的东西：我们的决心与渴望，我们喜欢和讨厌的东西，我们欢笑或哭泣的理由，还有那些，我们不曾说出口的秘密。</span></p>
 				</div>
 				<div class="qingdan">
 					<ul>

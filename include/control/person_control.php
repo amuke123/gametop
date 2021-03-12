@@ -47,11 +47,22 @@ class person_Control{
 				$topname='我的收藏';
 				$keyson=2;
 				break;
-			case 'list':$topname='我的清单';$keyson=3;break;
+			case 'list':
+				$rolestr=" and `uid`='".$uid."' ";
+				$wishlists=wishlist_Model::getWhihlists($pagenum,$startnum,$rolestr);
+				$counts=wishlist_Model::getWhihNum($rolestr);
+				$wnumb=$counts['total'];
+				$pages=ceil($wnumb/$pagenum);
+				$urlpre=Url::person(UID).'list/page/';
+				$txtsub='个清单';
+				$pagestr=action_Model::pagelist($wnumb,$pages,$pageid,$urlpre,$txtsub,'');
+				$topname='我的清单';
+				$keyson=3;
+				break;
 			case 'follow':
 				$gzlist=user_Model::getGz($uid);//关注列表
 				$fslist=user_Model::getFs($uid);//粉丝列表
-				$topname='粉丝和关注';
+				$topname='关注与粉丝';
 				$keyson=4;
 				break;
 			default:

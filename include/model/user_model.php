@@ -62,6 +62,11 @@ class user_Model{
 		return $row;
 	}
 	
+	public static function getUserDes($uid){
+		$reset=self::getInfo($uid);
+		return $reset['description'];
+	}
+	
 	public static function getUserName($uid){
 		$reset=self::getInfo($uid);
 		return $reset['name'];
@@ -131,6 +136,18 @@ class user_Model{
 		if(count($foc)>0){
 			foreach($foc as $val){
 				if($val['pre_uid']==$id){
+					$key=$val['id'];
+				}
+			}
+		}
+		return $key;
+	}
+	
+	public static function isGz2($foc,$id){//判断是否被您关注
+		$key=0;
+		if(count($foc)>0){
+			foreach($foc as $val){
+				if($val['pro_uid']==$id){
 					$key=$val['id'];
 				}
 			}
