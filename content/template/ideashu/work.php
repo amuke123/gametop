@@ -8,48 +8,44 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 				<div class="left cent_left">
 					<div class="cent_info">
 						<div class="cent_head">
-							<span><img src="<?php echo TEMPLATE_URL;?>images/1.jpg"/></span>
-							<b><a href=""> 幅度 </a>先生</b>
+							<span><img src="<?php echo user_Model::getUserPhoto($userinfo['id']);?>"/></span>
+							<b><a target="_blank" href="<?php echo Url::author($uid);?>"> <?php echo $userinfo['name'];?> </a><?php echo $userinfo['sex']=='2'?'女士/先生':($userinfo['sex']=='0'?'女士':'先生');?></b>
 						</div>
 						<div class="cent_prove">
 							<p><a href="#">1</a><a href="#">2</a><a href="#">3</a></p>
 						</div>
 						<div class="cent_mation">
-							<p><b>ID</b><span>356345545</span></p>
-							<p><b>等级</b><span>VIP1</span></p>
-							<p><b>积分</b><span>620 <a href="#">赚积分</a></span></p>
+							<p><b>ID号</b><span><?php echo $userinfo['username'];?></span></p>
+							<p><b>权限</b><span><?php echo $roles[$userinfo['role']];?></span></p>
+							<p><b>入驻</b><span><?php echo getToNowDays($userinfo['date']);?></span></p>
+							<p><b>积分</b><span><?php echo $userinfo['order'];?> <a href="#">赚积分</a></span></p>
 						</div>
 					</div>
 					<div class="cent_list">
 						<ul id="c_left">
-							<li><a id='nav_home' onClick="show(this);" href="#"><i class="icon aicon-home"></i>创作中心</a></li>
+							<li><a id='nav_home' onClick="show(this);" href="<?php echo Url::work(UID);?>"><i class="icon aicon-home"></i>创作中心</a></li>
 							<li>
-								<a id='nav_write' onClick="show(this);" href="#"><i class="icon aicon-write"></i>记笔记</a>
+								<a id='nav_write' onClick="show(this);" href="<?php echo Url::work(UID);?>write"><i class="icon aicon-write"></i>记笔记</a>
 							</li>
 							<li>
-								<a id='nav_list' onClick="show(this);" href="#"><i class="icon aicon-list"></i>笔记列表</a>
+								<a id='nav_list' onClick="show(this);" href="<?php echo Url::work(UID);?>notes"><i class="icon aicon-list"></i>笔记列表</a>
 							</li>
 							<li>
-								<a id='nav_bookmark' onClick="show(this);" href="#"><i class="icon aicon-page"></i>清单</a>
+								<a id='nav_bookmark' onClick="show(this);" href="<?php echo Url::work(UID);?>wish"><i class="icon aicon-page"></i>清单</a>
 							</li>
 							<li>
-								<a id='nav_collect' onClick="show(this);" href="#"><i class="icon aicon-bookmark"></i>收藏</a>
+								<a id='nav_collect' onClick="show(this);" href="<?php echo Url::work(UID);?>collect"><i class="icon aicon-bookmark"></i>收藏</a>
 							</li>
 							<li>
-								<span id='nav_user' onClick="show(this);"><i class="icon aicon-user"></i>用户<i class="icon aicon-fold"></i></span>
-								<ul>
-									<li><a id='nav_ulist' href="#"><i class="icon aicono-user"></i>用户</a></li>
-									<li><a id='nav_chat' href="#"><i class="icon aicon-chat"></i>评论</a></li>
-								</ul>
+								<a id='nav_chat' onClick="show(this);" href="<?php echo Url::work(UID);?>comment"><i class="icon aicon-chat"></i>评论</a>
 							</li>
 							<li>
-								<span id='nav_eye' onClick="show(this);"><i class="icon aicon-eye"></i>外观<i class="icon aicon-fold"></i></span>
-								<ul>
-									<li><a id='nav_nav' href="#"><i class="icon aicon-fied"></i>导航</a></li>
-									<li><a id='nav_tem' href="#"><i class="icon aicon-tian"></i>模板</a></li>
-								</ul>
+								<a id='nav_data' onClick="show(this);" href="<?php echo Url::work(UID);?>data"><i class="icon aicon-data"></i>数据</a>
 							</li>
 							<li>
+								<a id='nav_pass' onClick="show(this);" href="<?php echo Url::work(UID);?>set"><i class="icon aicon-pass"></i>设置</a>
+							</li>
+							<!--li>
 								<span id='nav_pass' onClick="show(this);"><i class="icon aicon-pass"></i>系统<i class="icon aicon-fold"></i></span>
 								<ul>
 									<li><a id='nav_set' href="#"><i class="icon aicon-set"><i></i></i>设置</a></li>
@@ -57,7 +53,7 @@ if(!defined('IDEA_ROOT')){exit('error!');}
 									<li><a id='nav_plugin' href="#"><i class="icon aicon-plugin"></i>插件</a></li>
 									<li><a id='nav_info' href="#"><i class="icon aicon-info"></i>应用</a></li>
 								</ul>
-							</li>
+							</li-->
 						</ul>
 						<div class="line2"></div>
 					</div>
