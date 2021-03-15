@@ -67,13 +67,13 @@ class person_Control{
 				break;
 			default:
 				
-				$topname='动态';
+				$topname=$userinfo['name']."的动态";
 				$keyson=0;
 				break;
 		}
 		
 		
-		$site_title=$userinfo['name']."的".$topname.'-'.$site_title;
+		$site_title=$topname.'-'.$site_title;
 		$site_description=$topname.'，'.$site_description;
 		$site_key=$topname.','.$site_key;
 
